@@ -1,0 +1,29 @@
+.engagement-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.engagement-tab {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: -1px;
+}
+
+.engagement-tab:hover {
+  color: #2563eb;
+  background: #f8fafc;
+}
+
+.engagement-tab--active {
+  color: #2563eb;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-bottom-color: #ffffff;
+}

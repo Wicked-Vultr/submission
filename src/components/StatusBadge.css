@@ -1,0 +1,39 @@
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.status-badge--draft {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.status-badge--scoping {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-badge--research {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.status-badge--review {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.status-badge--approved {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.status-badge--closed {
+  background: #e2e8f0;
+  color: #64748b;
+}

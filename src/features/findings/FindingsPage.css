@@ -1,0 +1,14 @@
+@import '../engagements/NewEngagementPage.css';
+
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.form-description {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 16px;
+}

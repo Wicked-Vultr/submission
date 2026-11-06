@@ -1,0 +1,106 @@
+@import '../findings/FindingsPage.css';
+
+.rec-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.rec-toolbar h2 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.rec-summary {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.rec-status {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin-bottom: 8px;
+}
+
+.rec-summary h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.rec-rationale {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.option-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.option-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.option-card--preferred {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.option-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.preferred-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: #2563eb;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.option-card ul {
+  margin: 10px 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.score-expl {
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.pros-cons ul {
+  margin-top: 6px;
+}
+
+.rec-share-btn {
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  .pros-cons {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,46 @@
+.export-panel h2 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.export-panel .form-description {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.export-btn:hover:not(:disabled) {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.export-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #94a3b8;
+}

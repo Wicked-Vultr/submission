@@ -1,0 +1,25 @@
+.procureiq-panel {
+  max-width: 720px;
+}
+
+.procureiq-icon {
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+.procureiq-panel h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.procureiq-steps {
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.procureiq-link {
+  font-weight: 600;
+}

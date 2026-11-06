@@ -1,0 +1,52 @@
+@import '../dashboard/DashboardPage.css';
+
+.engagement-form-panel {
+  max-width: 850px;
+}
+
+.engagement-form-panel h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.form-description {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.engagement-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.engagement-form label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.engagement-form input,
+.engagement-form textarea,
+.engagement-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  outline: none;
+  font-size: 13px;
+}
+
+.engagement-form input:focus,
+.engagement-form textarea:focus {
+  border-color: #2563eb;
+}
+
+.engagement-form textarea {
+  resize: vertical;
+}
+
+.engagement-form button {
+  align-self: flex-start;
+}

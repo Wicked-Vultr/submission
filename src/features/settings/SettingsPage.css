@@ -1,0 +1,47 @@
+.settings-panel h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.settings-dl {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.settings-dl dt {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.settings-dl dd {
+  font-size: 14px;
+  color: #334155;
+}
+
+.settings-dl code {
+  font-size: 12px;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.signout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.signout-btn:hover {
+  border-color: #fca5a5;
+  color: #b91c1c;
+}

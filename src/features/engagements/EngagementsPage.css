@@ -1,0 +1,39 @@
+@import '../dashboard/DashboardPage.css';
+
+.engagements-list-title {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.engagements-list-items {
+  list-style: none;
+}
+
+.engagement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.engagement-row:last-child {
+  border-bottom: none;
+}
+
+.engagement-row strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #1e293b;
+}
+
+.engagement-row span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.engagement-row:hover strong {
+  color: #2563eb;
+}

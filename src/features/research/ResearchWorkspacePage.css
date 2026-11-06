@@ -1,0 +1,130 @@
+@import '../engagements/EngagementWorkspace.css';
+
+.research-panel h2 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.research-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.research-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.research-reset-btn {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.research-progress-bar {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.research-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  transition: width 0.35s ease;
+}
+
+.research-progress-label {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.research-error {
+  color: #b91c1c;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.phase-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phase-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.phase-item strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.phase-item span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.phase-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.phase-item--active {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.phase-item--active .phase-indicator {
+  background: #2563eb;
+  box-shadow: 0 0 0 3px #bfdbfe;
+}
+
+.phase-item--done {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.phase-item--done .phase-indicator {
+  background: #16a34a;
+}
+
+.research-next-step {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.research-next-step a {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
