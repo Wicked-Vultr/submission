@@ -5,7 +5,7 @@ import type { Engagement } from '../../types/engagement'
 import type { Customer } from '../../types/customer'
 import EvidenceCard from '../../components/EvidenceCard'
 import ComparisonTable from '../../components/ComparisonTable'
-import ComparisonScoresChart from './ComparisonScoresChart'
+import LazyComparisonScoresChart from './ComparisonScoresChart.lazy'
 import {
   getComparison,
   getFindings,
@@ -13,8 +13,6 @@ import {
 } from '../../lib/findingsStorage'
 import '../engagements/EngagementWorkspace.css'
 import './FindingsPage.css'
-import './ComparisonScoresChart.css'
-
 interface EngagementContext {
   engagement: Engagement
   customer?: Customer
@@ -95,7 +93,7 @@ export default function FindingsPage() {
                 Transparent scoring with configurable weights (demo weights from
                 research job).
               </p>
-              <ComparisonScoresChart findings={findings} comparison={comparison} />
+              <LazyComparisonScoresChart findings={findings} comparison={comparison} />
               <ComparisonTable findings={findings} comparison={comparison} />
             </section>
           )}

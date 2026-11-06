@@ -1,4 +1,4 @@
-import { ArrowLeft, Plus, Trash2 } from 'lucide-react'
+import { ArrowLeft, Plus, Trash2, Building2 } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm, useFieldArray } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,7 +10,8 @@ import {
   type NewCustomerFormValues,
 } from '../../lib/validation/schemas'
 import FieldError from '../../components/FieldError'
-import './NewCustomerPage.css'
+import { Button } from '../../components/ui/button'
+import { cn } from '../../lib/utils'
 
 export default function NewCustomerPage() {
   const navigate = useNavigate()
@@ -71,170 +72,271 @@ export default function NewCustomerPage() {
     navigate('/app/customers')
   }
 
-  return (
-    <div className="dashboard-page">
-      <header className="dashboard-header">
-        <div>
-          <p className="dashboard-eyebrow">CUSTOMERS</p>
-          <h1>Add Customer</h1>
-          <p>Add an organization and its contact information.</p>
-        </div>
+  const inputClass =
+    'flex h-10 w-full rounded-lg border border-input bg-card px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50'
+  const labelClass = 'mb-1.5 block text-sm font-medium text-foreground'
 
-        <Link to="/app/customers" className="view-all-btn">
-          <ArrowLeft size={16} />
-          Back to Customers
-        </Link>
+  return (
+    <div className="px-4 pb-10 pt-2 sm:px-6">
+      <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="mb-2 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-primary">
+            Customers
+          </p>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            Add customer
+          </h1>
+          <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+            Capture the organization and stakeholders that experts will collaborate with on
+            engagements.
+          </p>
+        </div>
+        <Button variant="outline" size="sm" asChild>
+          <Link to="/app/customers" className="gap-2">
+            <ArrowLeft className="size-4" />
+            Back
+          </Link>
+        </Button>
       </header>
 
-      <section className="dashboard-panel customer-form-panel">
-        <form className="customer-form" onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className="form-section">
-            <h2>Organization Information</h2>
-            <p className="form-description">
-              Enter the basic details about the customer organization.
-            </p>
-
-            <label htmlFor="customer-name">Organization Name *</label>
-            <input
-              id="customer-name"
-              placeholder="Enter organization name"
-              aria-invalid={errors.name ? 'true' : 'false'}
-              {...register('name')}
-            />
-            <FieldError message={errors.name?.message} />
-
-            <label htmlFor="customer-type">Customer Type *</label>
-            <select id="customer-type" {...register('customerType')}>
-              <option value="Company">Company</option>
-              <option value="Internal Business Unit">Internal Business Unit</option>
-              <option value="Other">Other</option>
-            </select>
-
-            <label htmlFor="industry">Industry</label>
-            <input
-              id="industry"
-              placeholder="e.g. Information Technology, Healthcare"
-              {...register('industry')}
-            />
-
-            <label htmlFor="department">Department</label>
-            <input
-              id="department"
-              placeholder="e.g. IT, Procurement, Operations"
-              {...register('department')}
-            />
-
-            <label htmlFor="description">Organization Description / Context</label>
-            <textarea
-              id="description"
-              rows={4}
-              placeholder="Describe the organization and relevant background..."
-              {...register('description')}
-            />
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
+        <section className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div className="mb-6 flex items-start gap-3">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Building2 className="size-5" />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-foreground">
+                Organization
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Basics used across engagements and audit trails.
+              </p>
+            </div>
           </div>
 
-          <div className="form-section">
-            <div className="contacts-heading">
-              <div>
-                <h2>Customer Contacts</h2>
-                <p className="form-description">
-                  Add the people who will communicate with the Expert.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                className="add-contact-btn"
-                onClick={() =>
-                  append({
-                    id: `${Date.now()}-${fields.length}`,
-                    name: '',
-                    email: '',
-                    role: '',
-                    contactPreferences: '',
-                  })
-                }
-              >
-                <Plus size={16} />
-                Add Contact
-              </button>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div className="sm:col-span-2">
+              <label htmlFor="customer-name" className={labelClass}>
+                Organization name *
+              </label>
+              <input
+                id="customer-name"
+                placeholder="e.g. Contoso Procurement"
+                aria-invalid={errors.name ? 'true' : 'false'}
+                className={cn(inputClass, errors.name && 'border-destructive')}
+                {...register('name')}
+              />
+              <FieldError message={errors.name?.message} className="mb-0 mt-1" />
             </div>
 
-            <FieldError message={errors.contacts?.message} />
+            <div>
+              <label htmlFor="customer-type" className={labelClass}>
+                Customer type *
+              </label>
+              <select
+                id="customer-type"
+                className={cn(inputClass, 'h-10')}
+                {...register('customerType')}
+              >
+                <option value="Company">Company</option>
+                <option value="Internal Business Unit">Internal Business Unit</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
 
+            <div>
+              <label htmlFor="industry" className={labelClass}>
+                Industry
+              </label>
+              <input
+                id="industry"
+                placeholder="e.g. Information Technology"
+                className={inputClass}
+                {...register('industry')}
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="department" className={labelClass}>
+                Department / unit
+              </label>
+              <input
+                id="department"
+                placeholder="e.g. Procurement, IT, Operations"
+                className={inputClass}
+                {...register('department')}
+              />
+            </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="description" className={labelClass}>
+                Context
+              </label>
+              <textarea
+                id="description"
+                rows={4}
+                placeholder="Background, constraints, or how this customer prefers to work…"
+                className={cn(inputClass, 'min-h-[100px] resize-y')}
+                {...register('description')}
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold text-foreground">Contacts</h2>
+              <p className="text-sm text-muted-foreground">
+                At least one contact with name and email is required.
+              </p>
+            </div>
+            <Button
+              type="button"
+              variant="secondary"
+              size="sm"
+              className="gap-2"
+              onClick={() =>
+                append({
+                  id: `${Date.now()}-${fields.length}`,
+                  name: '',
+                  email: '',
+                  role: '',
+                  contactPreferences: '',
+                })
+              }
+            >
+              <Plus className="size-4" />
+              Add contact
+            </Button>
+          </div>
+
+          <FieldError message={errors.contacts?.message} className="mb-4" />
+
+          <div className="space-y-4">
             {fields.map((field, index) => (
-              <div className="contact-form-card" key={field.id}>
-                <div className="contact-card-heading">
-                  <h3>Contact {index + 1}</h3>
-
+              <div
+                key={field.id}
+                className="rounded-xl border border-border bg-muted/40 p-4 sm:p-5"
+              >
+                <div className="mb-4 flex items-center justify-between gap-2">
+                  <h3 className="text-sm font-semibold text-foreground">
+                    Contact {index + 1}
+                  </h3>
                   {fields.length > 1 && (
-                    <button
+                    <Button
                       type="button"
-                      className="remove-contact-btn"
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 text-destructive hover:bg-destructive/10 hover:text-destructive"
                       onClick={() => remove(index)}
                       aria-label={`Remove contact ${index + 1}`}
                     >
-                      <Trash2 size={16} />
+                      <Trash2 className="size-4" />
                       Remove
-                    </button>
+                    </Button>
                   )}
                 </div>
 
-                <label htmlFor={`contact-name-${field.id}`}>Contact Name</label>
-                <input
-                  id={`contact-name-${field.id}`}
-                  placeholder="Enter contact name"
-                  aria-invalid={
-                    errors.contacts?.[index]?.name ? 'true' : 'false'
-                  }
-                  {...register(`contacts.${index}.name`)}
-                />
-                <FieldError message={errors.contacts?.[index]?.name?.message} />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor={`contact-name-${field.id}`}
+                      className={labelClass}
+                    >
+                      Name
+                    </label>
+                    <input
+                      id={`contact-name-${field.id}`}
+                      placeholder="Full name"
+                      aria-invalid={
+                        errors.contacts?.[index]?.name ? 'true' : 'false'
+                      }
+                      className={cn(
+                        inputClass,
+                        errors.contacts?.[index]?.name && 'border-destructive'
+                      )}
+                      {...register(`contacts.${index}.name`)}
+                    />
+                    <FieldError
+                      message={errors.contacts?.[index]?.name?.message}
+                      className="mb-0 mt-1"
+                    />
+                  </div>
 
-                <label htmlFor={`contact-email-${field.id}`}>Email Address</label>
-                <input
-                  id={`contact-email-${field.id}`}
-                  type="email"
-                  placeholder="Enter email address"
-                  aria-invalid={
-                    errors.contacts?.[index]?.email ? 'true' : 'false'
-                  }
-                  {...register(`contacts.${index}.email`)}
-                />
-                <FieldError message={errors.contacts?.[index]?.email?.message} />
+                  <div>
+                    <label
+                      htmlFor={`contact-email-${field.id}`}
+                      className={labelClass}
+                    >
+                      Email
+                    </label>
+                    <input
+                      id={`contact-email-${field.id}`}
+                      type="email"
+                      placeholder="name@company.com"
+                      aria-invalid={
+                        errors.contacts?.[index]?.email ? 'true' : 'false'
+                      }
+                      className={cn(
+                        inputClass,
+                        errors.contacts?.[index]?.email && 'border-destructive'
+                      )}
+                      {...register(`contacts.${index}.email`)}
+                    />
+                    <FieldError
+                      message={errors.contacts?.[index]?.email?.message}
+                      className="mb-0 mt-1"
+                    />
+                  </div>
 
-                <input type="hidden" {...register(`contacts.${index}.id`)} />
+                  <input type="hidden" {...register(`contacts.${index}.id`)} />
 
-                <label htmlFor={`contact-role-${field.id}`}>Role / Position</label>
-                <input
-                  id={`contact-role-${field.id}`}
-                  placeholder="e.g. Primary Stakeholder, Manager"
-                  {...register(`contacts.${index}.role`)}
-                />
+                  <div className="sm:col-span-2">
+                    <label
+                      htmlFor={`contact-role-${field.id}`}
+                      className={labelClass}
+                    >
+                      Role
+                    </label>
+                    <input
+                      id={`contact-role-${field.id}`}
+                      placeholder="e.g. Procurement lead"
+                      className={inputClass}
+                      {...register(`contacts.${index}.role`)}
+                    />
+                  </div>
 
-                <label htmlFor={`contact-preferences-${field.id}`}>
-                  Contact Preferences
-                </label>
-                <input
-                  id={`contact-preferences-${field.id}`}
-                  placeholder="e.g. Email, Phone, Preferred contact time"
-                  {...register(`contacts.${index}.contactPreferences`)}
-                />
+                  <div className="sm:col-span-2">
+                    <label
+                      htmlFor={`contact-preferences-${field.id}`}
+                      className={labelClass}
+                    >
+                      Contact preferences
+                    </label>
+                    <input
+                      id={`contact-preferences-${field.id}`}
+                      placeholder="e.g. Email; Tue–Thu afternoons"
+                      className={inputClass}
+                      {...register(`contacts.${index}.contactPreferences`)}
+                    />
+                  </div>
+                </div>
               </div>
             ))}
           </div>
+        </section>
 
-          <div className="form-actions">
-            <Link to="/app/customers" className="cancel-form-btn">
-              Cancel
-            </Link>
-
-            <button type="submit" className="new-engagement-btn">
-              Add Customer
-            </button>
-          </div>
-        </form>
-      </section>
+        <div className="flex flex-wrap items-center justify-end gap-3 border-t border-border pt-6">
+          <Button variant="outline" type="button" asChild>
+            <Link to="/app/customers">Cancel</Link>
+          </Button>
+          <Button type="submit" className="min-w-[140px] shadow-md">
+            Save customer
+          </Button>
+        </div>
+      </form>
     </div>
   )
 }

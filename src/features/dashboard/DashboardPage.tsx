@@ -17,7 +17,7 @@ import { getCustomers } from '../../lib/customerStorage'
 import { getEngagements } from '../../lib/engagementStorage'
 import { getActivity } from '../../lib/activityStorage'
 import StatusBadge from '../../components/StatusBadge'
-import EngagementStatusChart from './EngagementStatusChart'
+import LazyEngagementStatusChart from './EngagementStatusChart.lazy'
 import { engagementProgressPercent } from './dashboardUtils'
 import type { Engagement } from '../../types/engagement'
 import type { EngagementStatus } from '../../types/engagement'
@@ -215,7 +215,7 @@ export default function DashboardPage() {
               <p>Progress across the expert-led lifecycle</p>
             </div>
           </div>
-          <EngagementStatusChart counts={statusCounts} />
+          <LazyEngagementStatusChart counts={statusCounts} />
           <div className="status-legend">
             {STATUS_KEYS.map((key) => (
               <span key={key} className="status-legend-item">

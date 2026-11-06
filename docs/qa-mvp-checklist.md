@@ -93,7 +93,7 @@ For one test engagement, verify all tabs load without console errors:
 ## 9. Dashboard & charts
 
 - [ ] Stat cards show plausible counts (active, customers, pending review, completed)  
-- [ ] When ≥1 engagement exists, **Engagements by status** chart renders  
+- [ ] When ≥1 engagement exists, **Engagements by status** chart renders (may show **“Loading chart…”** briefly while Recharts loads — expected)  
 - [ ] No layout break at ~375px width (smoke mobile)
 
 ---
