@@ -6,9 +6,6 @@ import {
   Settings,
   ShoppingCart,
   LayoutGrid,
-  HeartHandshake,
-  PiggyBank,
-  Headphones,
   BookOpen,
 } from 'lucide-react'
 import './Sidebar.css'
@@ -78,36 +75,6 @@ export default function Sidebar() {
         >
           <ShoppingCart size={19} strokeWidth={2} />
           ProcureIQ
-        </NavLink>
-
-        <NavLink
-          to="/app/solutions/hr"
-          className={({ isActive }) =>
-            isActive ? 'nav-link nav-link--active' : 'nav-link'
-          }
-        >
-          <HeartHandshake size={19} strokeWidth={2} />
-          HR Solutions
-        </NavLink>
-
-        <NavLink
-          to="/app/solutions/finance"
-          className={({ isActive }) =>
-            isActive ? 'nav-link nav-link--active' : 'nav-link'
-          }
-        >
-          <PiggyBank size={19} strokeWidth={2} />
-          Finance Solutions
-        </NavLink>
-
-        <NavLink
-          to="/app/solutions/support"
-          className={({ isActive }) =>
-            isActive ? 'nav-link nav-link--active' : 'nav-link'
-          }
-        >
-          <Headphones size={19} strokeWidth={2} />
-          Support Solutions
         </NavLink>
 
         <p className="nav-label">Resources</p>

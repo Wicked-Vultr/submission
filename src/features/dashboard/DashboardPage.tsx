@@ -11,9 +11,6 @@ import {
   Clock3,
   ArrowUpRight as ArrowUp,
   ShoppingCart,
-  HeartHandshake,
-  PiggyBank,
-  Headphones,
   Sparkles,
 } from 'lucide-react'
 import { getCustomers } from '../../lib/customerStorage'
@@ -93,8 +90,8 @@ export default function DashboardPage() {
               <Plus size={18} strokeWidth={2.5} />
               New Engagement
             </Link>
-            <Link to="/app/solutions" className="dashboard-hero-link">
-              Explore solutions hub
+            <Link to="/app/solutions/procureiq" className="dashboard-hero-link">
+              Open ProcureIQ
               <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -182,57 +179,29 @@ export default function DashboardPage() {
           <div>
             <h2 className="dashboard-section-title">Your solutions</h2>
             <p className="dashboard-section-sub">
-              Specialized modules share the same engagement, CHRONICLE research, and
-              approvals backbone.
+              MVP highlights the <strong>ProcureIQ</strong> procurement module (HR / Finance /
+              Support are post‑MVP in the blueprint).
             </p>
           </div>
           <Link to="/app/solutions" className="view-all-btn">
-            View all solutions <ArrowUpRight size={16} />
+            Solutions hub <ArrowUpRight size={16} />
           </Link>
         </div>
 
-        <div className="solution-tiles">
-          <Link to="/app/solutions/procureiq" className="solution-tile solution-tile--green">
+        <div className="solution-tiles solution-tiles--single">
+          <Link to="/app/solutions/procureiq" className="solution-tile solution-tile--featured">
             <div className="solution-tile-icon">
               <ShoppingCart size={22} />
             </div>
-            <h3>ProcureIQ</h3>
-            <p>Vendor research, comparison, and RFQ drafts for procurement teams.</p>
-            <span className="solution-tile-cta">
-              Open <ArrowUpRight size={16} />
-            </span>
-          </Link>
-
-          <Link to="/app/solutions/hr" className="solution-tile solution-tile--blue">
-            <div className="solution-tile-icon">
-              <HeartHandshake size={22} />
+            <div className="solution-tile-body">
+              <h3>ProcureIQ</h3>
+              <p>
+                Vendor research, weighted comparison, and RFQ-style drafts on top of the same
+                engagements and CHRONICLE pipeline.
+              </p>
             </div>
-            <h3>HR Solutions</h3>
-            <p>Talent, policy, and workforce planning engagements (stretch module).</p>
             <span className="solution-tile-cta">
-              Preview <ArrowUpRight size={16} />
-            </span>
-          </Link>
-
-          <Link to="/app/solutions/finance" className="solution-tile solution-tile--purple">
-            <div className="solution-tile-icon">
-              <PiggyBank size={22} />
-            </div>
-            <h3>Finance Solutions</h3>
-            <p>Cost models, tooling comparisons, and governance reviews.</p>
-            <span className="solution-tile-cta">
-              Preview <ArrowUpRight size={16} />
-            </span>
-          </Link>
-
-          <Link to="/app/solutions/support" className="solution-tile solution-tile--orange">
-            <div className="solution-tile-icon">
-              <Headphones size={22} />
-            </div>
-            <h3>Support Solutions</h3>
-            <p>Support stack selection with evidence-backed trade-offs.</p>
-            <span className="solution-tile-cta">
-              Preview <ArrowUpRight size={16} />
+              Open ProcureIQ <ArrowUpRight size={16} />
             </span>
           </Link>
         </div>

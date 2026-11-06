@@ -1,36 +1,106 @@
 import { Link } from 'react-router-dom'
-import { ShoppingCart, ArrowRight } from 'lucide-react'
+import {
+  ShoppingCart,
+  ArrowRight,
+  ClipboardList,
+  Microscope,
+  Scale,
+  FileCheck,
+  FileText,
+} from 'lucide-react'
 import '../dashboard/DashboardPage.css'
 import './ProcureIQPage.css'
 
+const STEPS = [
+  {
+    title: 'Request',
+    body: 'Customer captures quantity, budget, specifications, and delivery window.',
+    icon: ClipboardList,
+  },
+  {
+    title: 'Scope',
+    body: 'Expert locks objectives, constraints, and success criteria in an engagement.',
+    icon: FileText,
+  },
+  {
+    title: 'Research',
+    body: 'CHRONICLE runs vendor/product intelligence with source-backed evidence.',
+    icon: Microscope,
+  },
+  {
+    title: 'Compare & RFQ',
+    body: 'Weighted comparison highlights gaps; RFQ drafts stay in review until approval.',
+    icon: Scale,
+  },
+  {
+    title: 'Approve',
+    body: 'Human gate before any external submission—aligned with blueprint policies.',
+    icon: FileCheck,
+  },
+]
+
 export default function ProcureIQPage() {
   return (
-    <div className="dashboard-page">
-      <header className="dashboard-header">
+    <div className="dashboard-page procureiq-page">
+      <section className="procureiq-hero">
+        <div className="procureiq-hero-badge">
+          <ShoppingCart size={18} strokeWidth={2.5} aria-hidden />
+          Specialized module
+        </div>
+        <h1>ProcureIQ</h1>
+        <p className="procureiq-lead">
+          Procurement workflow that reuses <strong>customers</strong>,{' '}
+          <strong>engagements</strong>, <strong>CHRONICLE research</strong>,{' '}
+          <strong>evidence</strong>, and <strong>approvals</strong>—the blueprint&apos;s optional
+          procurement demo, without inventing fake purchase completions.
+        </p>
+        <div className="procureiq-hero-actions">
+          <Link to="/app/engagements/new" className="procureiq-primary-btn">
+            Start procurement engagement
+            <ArrowRight size={17} />
+          </Link>
+          <Link to="/app/solutions" className="procureiq-secondary-link">
+            Back to solutions hub
+          </Link>
+        </div>
+      </section>
+
+      <section className="procureiq-how">
+        <h2>How the demo flows</h2>
+        <p className="procureiq-how-sub">
+          Follow the numbered path in the UI; external RFQs stay drafts until a real integration
+          exists.
+        </p>
+        <ol className="procureiq-step-list">
+          {STEPS.map((step, index) => {
+            const Icon = step.icon
+            return (
+              <li key={step.title}>
+                <div className="procureiq-step-index">{index + 1}</div>
+                <div className="procureiq-step-body">
+                  <div className="procureiq-step-head">
+                    <Icon size={18} aria-hidden />
+                    <h3>{step.title}</h3>
+                  </div>
+                  <p>{step.body}</p>
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+      </section>
+
+      <section className="procureiq-cta-panel">
         <div>
-          <p className="dashboard-eyebrow">SOLUTIONS</p>
-          <h1>ProcureIQ</h1>
+          <h2>Ready to run a scenario?</h2>
           <p>
-            Procurement module reusing engagements, CHRONICLE research, evidence,
-            and approvals.
+            Create an engagement, run research, and open <strong>Findings</strong> to see vendor
+            options with transparent weights—then move to recommendations and customer review.
           </p>
         </div>
-        <Link to="/app/engagements/new" className="new-engagement-btn">
-          Start procurement engagement
-        </Link>
-      </header>
-
-      <section className="dashboard-panel procureiq-panel">
-        <ShoppingCart size={28} className="procureiq-icon" />
-        <h2>Demo workflow</h2>
-        <ol className="procureiq-steps">
-          <li>Customer submits a purchase need (qty, budget, specs, delivery).</li>
-          <li>Expert scopes requirements on a standard engagement.</li>
-          <li>CHRONICLE researches vendors; findings feed comparison weights.</li>
-          <li>Expert reviews RFQ draft; approver confirms external submission.</li>
-        </ol>
-        <Link to="/app/engagements" className="view-all-btn procureiq-link">
-          Open engagements <ArrowRight size={16} />
+        <Link to="/app/engagements" className="procureiq-primary-btn procureiq-primary-btn--ghost">
+          Open engagements
+          <ArrowRight size={17} />
         </Link>
       </section>
     </div>
