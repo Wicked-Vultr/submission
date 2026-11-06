@@ -1,5 +1,6 @@
 import { Bell, Search, UserCircle } from 'lucide-react'
 import { getSession } from '../lib/authSession'
+import './Topbar.css'
 
 export default function Topbar() {
   const session = getSession()
@@ -7,8 +8,12 @@ export default function Topbar() {
   return (
     <header className="topbar">
       <div className="topbar-search">
-        <Search size={18} />
-        <input type="search" placeholder="Search workspace..." />
+        <Search size={18} aria-hidden />
+        <input
+          type="search"
+          placeholder="Search engagements, solutions, customers..."
+          aria-label="Search workspace"
+        />
       </div>
 
       <div className="topbar-actions">

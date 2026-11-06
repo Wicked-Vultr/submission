@@ -17,6 +17,7 @@ import CustomerReviewPage from '../features/approvals/CustomerReviewPage'
 import ProcureIQPage from '../features/procureiq/ProcureIQPage'
 import SettingsPage from '../features/settings/SettingsPage'
 import SolutionsHubPage from '../features/solutions/SolutionsHubPage'
+import ComingSoonPage from '../features/solutions/ComingSoonPage'
 
 export default function AppRouter() {
   return (
@@ -48,6 +49,7 @@ export default function AppRouter() {
           </Route>
           <Route path="solutions" element={<SolutionsHubPage />} />
           <Route path="solutions/procureiq" element={<ProcureIQPage />} />
+          <Route path="solutions/:moduleId" element={<ComingSoonPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
 

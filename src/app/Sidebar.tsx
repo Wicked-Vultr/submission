@@ -6,84 +6,134 @@ import {
   Settings,
   ShoppingCart,
   LayoutGrid,
+  HeartHandshake,
+  PiggyBank,
+  Headphones,
+  BookOpen,
 } from 'lucide-react'
+import './Sidebar.css'
 
 export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="brand-icon">E</div>
-        <span>Expert Intelligence</span>
+        <div className="brand-icon brand-icon--gradient">∞</div>
+        <div className="sidebar-brand-text">
+          <span className="sidebar-brand-title">Expert Intelligence</span>
+          <span className="sidebar-brand-sub">Assistant</span>
+        </div>
       </div>
 
       <nav className="sidebar-nav">
-        <p className="nav-label">WORKSPACE</p>
+        <p className="nav-label">Workspace</p>
 
         <NavLink
           to="/app"
           end
           className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
           }
         >
-          <LayoutDashboard size={19} />
-          Dashboard
-        </NavLink>
-
-        <NavLink
-          to="/app/customers"
-          className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
-          }
-        >
-          <Users size={19} />
-          Customers
+          <LayoutDashboard size={19} strokeWidth={2} />
+          Home
         </NavLink>
 
         <NavLink
           to="/app/engagements"
           className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
           }
         >
-          <BriefcaseBusiness size={19} />
-          Engagements
+          <BriefcaseBusiness size={19} strokeWidth={2} />
+          My Engagements
         </NavLink>
 
-        <p className="nav-label">SOLUTIONS</p>
+        <NavLink
+          to="/app/customers"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <Users size={19} strokeWidth={2} />
+          Customers
+        </NavLink>
+
+        <p className="nav-label">Solutions</p>
 
         <NavLink
           to="/app/solutions"
           className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
           }
         >
-          <LayoutGrid size={19} />
+          <LayoutGrid size={19} strokeWidth={2} />
           Solutions hub
         </NavLink>
 
         <NavLink
           to="/app/solutions/procureiq"
           className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
           }
         >
-          <ShoppingCart size={19} />
+          <ShoppingCart size={19} strokeWidth={2} />
           ProcureIQ
         </NavLink>
 
-        <p className="nav-label">PREFERENCES</p>
+        <NavLink
+          to="/app/solutions/hr"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <HeartHandshake size={19} strokeWidth={2} />
+          HR Solutions
+        </NavLink>
+
+        <NavLink
+          to="/app/solutions/finance"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <PiggyBank size={19} strokeWidth={2} />
+          Finance Solutions
+        </NavLink>
+
+        <NavLink
+          to="/app/solutions/support"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <Headphones size={19} strokeWidth={2} />
+          Support Solutions
+        </NavLink>
+
+        <p className="nav-label">Resources</p>
+
+        <a className="nav-link nav-link--muted" href="#knowledge">
+          <BookOpen size={19} strokeWidth={2} />
+          Knowledge Hub
+        </a>
+
+        <p className="nav-label">Preferences</p>
 
         <NavLink
           to="/app/settings"
           className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
           }
         >
-          <Settings size={19} />
+          <Settings size={19} strokeWidth={2} />
           Settings
         </NavLink>
       </nav>
+
+      <div className="sidebar-chronicle">
+        <p className="sidebar-chronicle-label">Powered by CHRONICLE</p>
+        <p className="sidebar-chronicle-sub">Research · Discover · Recommend</p>
+      </div>
     </aside>
   )
 }
