@@ -1,4 +1,5 @@
 import type { ActivityEvent } from '../types/research'
+import { readStorage, writeStorage } from './storage'
 
 const KEY = 'eia_activity'
 
@@ -10,15 +11,9 @@ export function logActivity(message: string, engagementId?: string): void {
     createdAt: new Date().toISOString(),
     engagementId,
   })
-  localStorage.setItem(KEY, JSON.stringify(events.slice(0, 50)))
+  writeStorage(KEY, events.slice(0, 50))
 }
 
 export function getActivity(): ActivityEvent[] {
-  const raw = localStorage.getItem(KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as ActivityEvent[]
-  } catch {
-    return []
-  }
+  return readStorage<ActivityEvent[]>(KEY) ?? []
 }
