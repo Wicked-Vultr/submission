@@ -1,16 +1,11 @@
 import type { CustomerReviewState } from '../types/research'
 import { logActivity } from './activityStorage'
+import { readStorage, writeStorage } from './storage'
 
 const KEY = 'eia_customer_review'
 
 function loadAll(): CustomerReviewState[] {
-  const raw = localStorage.getItem(KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as CustomerReviewState[]
-  } catch {
-    return []
-  }
+  return readStorage<CustomerReviewState[]>(KEY) ?? []
 }
 
 export function getReviewState(engagementId: string): CustomerReviewState {
@@ -36,7 +31,7 @@ export function submitReviewDecision(
     decidedAt: new Date().toISOString(),
   }
   const rest = loadAll().filter((r) => r.engagementId !== engagementId)
-  localStorage.setItem(KEY, JSON.stringify([...rest, state]))
+  writeStorage(KEY, [...rest, state])
   logActivity(
     decision === 'approved'
       ? 'Customer approved the proposal'
@@ -47,5 +42,5 @@ export function submitReviewDecision(
 
 export function resetReview(engagementId: string): void {
   const rest = loadAll().filter((r) => r.engagementId !== engagementId)
-  localStorage.setItem(KEY, JSON.stringify(rest))
+  writeStorage(KEY, rest)
 }
