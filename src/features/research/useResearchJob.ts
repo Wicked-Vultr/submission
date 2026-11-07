@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { apiV1 } from '../../lib/api/config'
+import { readStorage, removeStorage, writeStorage } from '../../lib/storage'
 import type {
   ResearchJobSnapshot,
   ResearchPhaseId,
@@ -9,13 +10,10 @@ import { createInitialPhases } from './chroniclePhases'
 const STORAGE_PREFIX = 'eia_research_job_'
 
 function loadSnapshot(engagementId: string): ResearchJobSnapshot {
-  const raw = localStorage.getItem(`${STORAGE_PREFIX}${engagementId}`)
-  if (raw) {
-    try {
-      return JSON.parse(raw) as ResearchJobSnapshot
-    } catch {
-      /* fall through */
-    }
+  const key = `${STORAGE_PREFIX}${engagementId}`
+  const snapshot = readStorage<ResearchJobSnapshot>(key)
+  if (snapshot) {
+    return snapshot
   }
 
   return {
@@ -32,10 +30,7 @@ function loadSnapshot(engagementId: string): ResearchJobSnapshot {
 }
 
 function persistSnapshot(snapshot: ResearchJobSnapshot): void {
-  localStorage.setItem(
-    `${STORAGE_PREFIX}${snapshot.engagementId}`,
-    JSON.stringify(snapshot)
-  )
+  writeStorage(`${STORAGE_PREFIX}${snapshot.engagementId}`, snapshot)
 }
 
 const PHASE_ORDER: ResearchPhaseId[] = [
@@ -57,6 +52,8 @@ function runMockPipeline(
 ): void {
   let step = 0
   const jobId = `mock-${engagementId}-${Date.now()}`
+
+  const setTimer = typeof window !== 'undefined' ? window.setTimeout.bind(window) : globalThis.setTimeout
 
   const tick = () => {
     if (cancelRef.current) return
@@ -87,7 +84,7 @@ function runMockPipeline(
 
     if (running) {
       step += 1
-      window.setTimeout(tick, 1400)
+      setTimer(tick, 1400)
     }
   }
 
@@ -118,6 +115,11 @@ export function useResearchJob(engagementId: string) {
   const startResearch = useCallback(async () => {
     cancelMockRef.current = false
     eventSourceRef.current?.close()
+
+    if (typeof fetch !== 'function') {
+      runMockPipeline(engagementId, applySnapshot, cancelMockRef)
+      return
+    }
 
     const initial: ResearchJobSnapshot = {
       ...loadSnapshot(engagementId),
@@ -159,6 +161,11 @@ export function useResearchJob(engagementId: string) {
       persistSnapshot(withJob)
       setSnapshot(withJob)
 
+      if (typeof EventSource === 'undefined') {
+        runMockPipeline(engagementId, applySnapshot, cancelMockRef)
+        return
+      }
+
       const streamUrl = apiV1(`/research/${jobId}/stream`)
       const source = new EventSource(streamUrl)
       eventSourceRef.current = source
@@ -193,7 +200,7 @@ export function useResearchJob(engagementId: string) {
   const resetResearch = useCallback(() => {
     cancelMockRef.current = true
     eventSourceRef.current?.close()
-    localStorage.removeItem(`${STORAGE_PREFIX}${engagementId}`)
+    removeStorage(`${STORAGE_PREFIX}${engagementId}`)
     setSnapshot(loadSnapshot(engagementId))
   }, [engagementId])
 
