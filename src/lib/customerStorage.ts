@@ -1,3 +1,4 @@
+import { readStorage, writeStorage } from './storage'
 import type { Customer } from '../types/customer'
 
 const STORAGE_KEY = 'eia_customers'
@@ -39,14 +40,12 @@ function normalizeCustomer(item: Customer | LegacyCustomer): Customer {
 }
 
 export function getCustomers(): Customer[] {
-  const data = localStorage.getItem(STORAGE_KEY)
+  const parsed = readStorage<Array<Customer | LegacyCustomer>>(STORAGE_KEY)
 
-  if (!data) return []
+  if (!parsed) return []
 
-  const parsed = JSON.parse(data) as (Customer | LegacyCustomer)[]
   const customers = parsed.map(normalizeCustomer)
-
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(customers))
+  writeStorage(STORAGE_KEY, customers)
 
   return customers
 }
@@ -60,7 +59,7 @@ export function saveCustomer(customer: Customer): void {
 
   customers.push(customer)
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(customers))
+  writeStorage(STORAGE_KEY, customers)
 }
 
 export function updateCustomer(updatedCustomer: Customer): void {
@@ -72,7 +71,7 @@ export function updateCustomer(updatedCustomer: Customer): void {
       : customer
   )
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedCustomers))
+  writeStorage(STORAGE_KEY, updatedCustomers)
 }
 
 export function deleteCustomer(id: string): void {
@@ -82,5 +81,5 @@ export function deleteCustomer(id: string): void {
     (customer) => customer.id !== id
   )
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedCustomers))
+  writeStorage(STORAGE_KEY, updatedCustomers)
 }
