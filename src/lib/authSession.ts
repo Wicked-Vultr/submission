@@ -1,3 +1,5 @@
+import { readStorage, removeStorage, writeStorage } from './storage'
+
 const SESSION_KEY = 'eia_session'
 
 export interface AuthSession {
@@ -7,15 +9,13 @@ export interface AuthSession {
 }
 
 export function getSession(): AuthSession | null {
-  const raw = localStorage.getItem(SESSION_KEY)
-  if (!raw) return null
-
-  try {
-    return JSON.parse(raw) as AuthSession
-  } catch {
-    localStorage.removeItem(SESSION_KEY)
+  const session = readStorage<AuthSession>(SESSION_KEY)
+  if (!session) {
+    removeStorage(SESSION_KEY)
     return null
   }
+
+  return session
 }
 
 export function signIn(email: string, displayName?: string): void {
@@ -24,11 +24,11 @@ export function signIn(email: string, displayName?: string): void {
     displayName: displayName?.trim() || email.split('@')[0] || 'Expert',
     signedInAt: new Date().toISOString(),
   }
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session))
+  writeStorage(SESSION_KEY, session)
 }
 
 export function signOut(): void {
-  localStorage.removeItem(SESSION_KEY)
+  removeStorage(SESSION_KEY)
 }
 
 export function isAuthenticated(): boolean {
