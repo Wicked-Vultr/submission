@@ -23,6 +23,8 @@ export default function FindingsPage() {
   const [version, setVersion] = useState(0)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     function onUpdate() {
       setVersion((v) => v + 1)
     }
