@@ -4,6 +4,7 @@ import type {
   ResearchSource,
 } from '../types/research'
 import { logActivity } from './activityStorage'
+import { readStorage, writeStorage } from './storage'
 
 const FINDINGS_KEY = 'eia_findings'
 const SOURCES_KEY = 'eia_sources'
@@ -67,8 +68,8 @@ export function seedFindingsForEngagement(engagementId: string, title: string): 
   const allSources = loadAllSources().filter((s) => !s.id.startsWith(engagementId))
   const allFindings = loadAllFindings().filter((f) => f.engagementId !== engagementId)
 
-  localStorage.setItem(SOURCES_KEY, JSON.stringify([...allSources, ...sources]))
-  localStorage.setItem(FINDINGS_KEY, JSON.stringify([...allFindings, ...findings]))
+  writeStorage(SOURCES_KEY, [...allSources, ...sources])
+  writeStorage(FINDINGS_KEY, [...allFindings, ...findings])
 
   const comparison: ComparisonScores = {
     engagementId,
@@ -90,40 +91,24 @@ export function seedFindingsForEngagement(engagementId: string, title: string): 
   }
 
   const comparisons = loadAllComparisons().filter((c) => c.engagementId !== engagementId)
-  localStorage.setItem(COMPARISON_KEY, JSON.stringify([...comparisons, comparison]))
+  writeStorage(COMPARISON_KEY, [...comparisons, comparison])
 
   logActivity(`CHRONICLE research completed for "${title}"`, engagementId)
-  window.dispatchEvent(new CustomEvent('eia-findings-updated', { detail: engagementId }))
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('eia-findings-updated', { detail: engagementId }))
+  }
 }
 
 function loadAllFindings(): EntityFinding[] {
-  const raw = localStorage.getItem(FINDINGS_KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as EntityFinding[]
-  } catch {
-    return []
-  }
+  return readStorage<EntityFinding[]>(FINDINGS_KEY) ?? []
 }
 
 function loadAllSources(): ResearchSource[] {
-  const raw = localStorage.getItem(SOURCES_KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as ResearchSource[]
-  } catch {
-    return []
-  }
+  return readStorage<ResearchSource[]>(SOURCES_KEY) ?? []
 }
 
 function loadAllComparisons(): ComparisonScores[] {
-  const raw = localStorage.getItem(COMPARISON_KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as ComparisonScores[]
-  } catch {
-    return []
-  }
+  return readStorage<ComparisonScores[]>(COMPARISON_KEY) ?? []
 }
 
 export function getFindings(engagementId: string): EntityFinding[] {
