@@ -1,17 +1,12 @@
 import type { RecommendationDraft } from '../types/research'
 import { getFindings, weightedTotal, getComparison } from './findingsStorage'
 import { logActivity } from './activityStorage'
+import { readStorage, writeStorage } from './storage'
 
 const KEY = 'eia_recommendations'
 
 function loadAll(): RecommendationDraft[] {
-  const raw = localStorage.getItem(KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as RecommendationDraft[]
-  } catch {
-    return []
-  }
+  return readStorage<RecommendationDraft[]>(KEY) ?? []
 }
 
 export function getRecommendation(engagementId: string): RecommendationDraft | undefined {
@@ -71,7 +66,7 @@ export function generateRecommendationDraft(
   }
 
   const rest = loadAll().filter((r) => r.engagementId !== engagementId)
-  localStorage.setItem(KEY, JSON.stringify([...rest, draft]))
+  writeStorage(KEY, [...rest, draft])
   logActivity(`Recommendation draft v${draft.version} generated`, engagementId)
   return draft
 }
@@ -81,5 +76,5 @@ export function markRecommendationShared(engagementId: string): void {
   if (!draft) return
   const updated = { ...draft, status: 'expert_review' as const, updatedAt: new Date().toISOString() }
   const rest = loadAll().filter((r) => r.engagementId !== engagementId)
-  localStorage.setItem(KEY, JSON.stringify([...rest, updated]))
+  writeStorage(KEY, [...rest, updated])
 }
