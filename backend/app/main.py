@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -7,7 +9,14 @@ from app.db.session import Base, engine
 
 settings = get_settings()
 
-app = FastAPI(title=settings.app_name, version=settings.version, debug=settings.debug)
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    Base.metadata.create_all(bind=engine)
+    yield
+
+
+app = FastAPI(title=settings.app_name, version=settings.version, debug=settings.debug, lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
@@ -27,8 +36,3 @@ def health_check():
 @app.get("/api/v1/health")
 def api_health_check():
     return {"status": "ok", "app": settings.app_name}
-
-
-@app.on_event("startup")
-def startup() -> None:
-    Base.metadata.create_all(bind=engine)
