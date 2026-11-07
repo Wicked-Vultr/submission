@@ -19,7 +19,7 @@ class ResearchService:
             current_phase="plan",
             brief=brief,
             findings_count=0,
-            metadata="{}",
+            job_metadata="{}",
         )
         db.add(job)
         db.commit()
@@ -27,7 +27,7 @@ class ResearchService:
         return job
 
     @staticmethod
-    def update_job(db: Session, job_id: str, *, status: str | None = None, progress: int | None = None, current_phase: str | None = None, findings_count: int | None = None, metadata: str | None = None) -> ResearchJob:
+    def update_job(db: Session, job_id: str, *, status: str | None = None, progress: int | None = None, current_phase: str | None = None, findings_count: int | None = None, job_metadata: str | None = None) -> ResearchJob:
         job = db.query(ResearchJob).filter(ResearchJob.id == job_id).first()
         if not job:
             raise ValueError("Research job not found")
@@ -39,8 +39,8 @@ class ResearchService:
             job.current_phase = current_phase
         if findings_count is not None:
             job.findings_count = findings_count
-        if metadata is not None:
-            job.metadata = metadata
+        if job_metadata is not None:
+            job.job_metadata = job_metadata
         job.updated_at = datetime.utcnow()
         db.commit()
         db.refresh(job)
