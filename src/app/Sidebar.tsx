@@ -7,6 +7,9 @@ import {
   ShoppingCart,
   LayoutGrid,
   BookOpen,
+  Briefcase,
+  Landmark,
+  Headphones,
 } from 'lucide-react'
 import './Sidebar.css'
 
@@ -77,12 +80,47 @@ export default function Sidebar() {
           ProcureIQ
         </NavLink>
 
+        <NavLink
+          to="/app/solutions/hr"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <Briefcase size={19} strokeWidth={2} />
+          HR Solutions
+        </NavLink>
+
+        <NavLink
+          to="/app/solutions/finance"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <Landmark size={19} strokeWidth={2} />
+          Finance Solutions
+        </NavLink>
+
+        <NavLink
+          to="/app/solutions/support"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
+          <Headphones size={19} strokeWidth={2} />
+          Support Solutions
+        </NavLink>
+
         <p className="nav-label">Resources</p>
 
-        <a className="nav-link nav-link--muted" href="#knowledge">
+        <NavLink
+          to="/app/knowledge"
+          className={({ isActive }) =>
+            isActive ? 'nav-link nav-link--active' : 'nav-link'
+          }
+        >
           <BookOpen size={19} strokeWidth={2} />
           Knowledge Hub
-        </a>
+        </NavLink>
 
         <p className="nav-label">Preferences</p>
 
