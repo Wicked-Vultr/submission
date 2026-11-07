@@ -17,11 +17,30 @@ const MODULES = [
       'Vendor research, weighted comparison, and RFQ-style drafts on top of the same engagements and CHRONICLE pipeline.',
     to: '/app/solutions/procureiq',
   },
+  {
+    id: 'hr',
+    title: 'HR Solutions',
+    description:
+      'Workforce planning, hiring, and organization design decisions aligned to evidence and human review.',
+    to: '/app/solutions/hr',
+  },
+  {
+    id: 'finance',
+    title: 'Finance Solutions',
+    description:
+      'Cost models, scenario comparisons, and ROI analyses for business planning and operational decisions.',
+    to: '/app/solutions/finance',
+  },
+  {
+    id: 'support',
+    title: 'Support Solutions',
+    description:
+      'Support operations, staffing, and service experience decisions grounded in evidence and approval workflows.',
+    to: '/app/solutions/support',
+  },
 ] as const
 
 export default function SolutionsHubPage() {
-  const module = MODULES[0]
-
   return (
     <div className="dashboard-page solutions-page">
       <section className="solutions-hero" aria-labelledby="solutions-hero-title">
@@ -77,34 +96,37 @@ export default function SolutionsHubPage() {
         </div>
 
         <div className="solutions-modules-grid">
-          <div className="solution-tiles solution-tiles--single solutions-hub-tiles">
-            <Link
-              to={module.to}
-              className="solution-tile solution-tile--featured solution-tile--blue"
-            >
-              <div className="solution-tile-icon">
-                <ShoppingCart size={22} aria-hidden />
-              </div>
-              <div className="solution-tile-body">
-                <h3>{module.title}</h3>
-                <p>{module.description}</p>
-              </div>
-              <span className="solution-tile-cta">
-                Open ProcureIQ <ArrowUpRight size={16} aria-hidden />
-              </span>
-            </Link>
+          <div className="solution-tiles solutions-hub-tiles">
+            {MODULES.map((module) => (
+              <Link
+                key={module.id}
+                to={module.to}
+                className="solution-tile solution-tile--featured solution-tile--blue"
+              >
+                <div className="solution-tile-icon">
+                  <ShoppingCart size={22} aria-hidden />
+                </div>
+                <div className="solution-tile-body">
+                  <h3>{module.title}</h3>
+                  <p>{module.description}</p>
+                </div>
+                <span className="solution-tile-cta">
+                  Open {module.title} <ArrowUpRight size={16} aria-hidden />
+                </span>
+              </Link>
+            ))}
           </div>
 
-          <aside className="solutions-roadmap-card" aria-label="Upcoming modules">
+          <aside className="solutions-roadmap-card" aria-label="Solution roadmap">
             <p className="solutions-roadmap-eyebrow">Blueprint</p>
-            <h3 className="solutions-roadmap-title">More solutions on the roadmap</h3>
+            <h3 className="solutions-roadmap-title">Specialized workstreams</h3>
             <p className="solutions-roadmap-text">
-              HR, Finance, and Support-style modules are defined in the product
-              blueprint for after MVP—they will follow the same hub pattern here.
+              HR, Finance, and Support modules now follow the same engagement-first
+              workflow and evidence model as the core product.
             </p>
             <p className="solutions-roadmap-hint">
-              Use <strong>ProcureIQ</strong> today for procurement; new tiles will
-              appear in this grid as they ship.
+              Use <strong>ProcureIQ</strong> for procurement readiness and the other
+              modules for domain-specific decision support.
             </p>
           </aside>
         </div>
