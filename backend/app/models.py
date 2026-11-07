@@ -96,7 +96,7 @@ class ResearchJob(Base):
     current_phase: Mapped[str] = mapped_column(String(50), default="plan")
     brief: Mapped[str | None] = mapped_column(Text)
     findings_count: Mapped[int] = mapped_column(Integer, default=0)
-    metadata: Mapped[str | None] = mapped_column(Text)
+    job_metadata: Mapped[str | None] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
