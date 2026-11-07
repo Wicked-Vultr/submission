@@ -1,17 +1,12 @@
 import type { RoadmapItem } from '../types/research'
 import { getRecommendation } from './recommendationsStorage'
 import { logActivity } from './activityStorage'
+import { readStorage, writeStorage } from './storage'
 
 const KEY = 'eia_roadmap'
 
 function loadAll(): RoadmapItem[] {
-  const raw = localStorage.getItem(KEY)
-  if (!raw) return []
-  try {
-    return JSON.parse(raw) as RoadmapItem[]
-  } catch {
-    return []
-  }
+  return readStorage<RoadmapItem[]>(KEY) ?? []
 }
 
 export function getRoadmapItems(engagementId: string): RoadmapItem[] {
@@ -66,7 +61,7 @@ export function generateRoadmapFromRecommendation(engagementId: string): Roadmap
   ]
 
   const rest = loadAll().filter((i) => i.engagementId !== engagementId)
-  localStorage.setItem(KEY, JSON.stringify([...rest, ...items]))
+  writeStorage(KEY, [...rest, ...items])
   logActivity('Implementation roadmap generated', engagementId)
   return items
 }
