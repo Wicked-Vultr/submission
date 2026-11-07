@@ -14,11 +14,10 @@ import FindingsPage from '../features/findings/FindingsPage'
 import RecommendationsPage from '../features/recommendations/RecommendationsPage'
 import RoadmapPage from '../features/roadmap/RoadmapPage'
 import CustomerReviewPage from '../features/approvals/CustomerReviewPage'
-import ProcureIQPage from '../features/procureiq/ProcureIQPage'
 import SettingsPage from '../features/settings/SettingsPage'
 import SolutionsHubPage from '../features/solutions/SolutionsHubPage'
 import KnowledgeHubPage from '../features/knowledge/KnowledgeHubPage'
-import SolutionModulePage from '../features/solutions/SolutionModulePage'
+import SolutionDetailPage from '../features/solutions/SolutionDetailPage'
 
 export default function AppRouter() {
   return (
@@ -49,10 +48,7 @@ export default function AppRouter() {
             <Route path="review" element={<CustomerReviewPage />} />
           </Route>
           <Route path="solutions" element={<SolutionsHubPage />} />
-          <Route path="solutions/procureiq" element={<ProcureIQPage />} />
-          <Route path="solutions/hr" element={<SolutionModulePage title="HR Solutions" eyebrow="Specialized module" description="Support workforce planning, hiring workflows, and internal stakeholder evaluation using the same engagement evidence and approval model." features={['Applicant or workforce demand capture', 'Role-fit comparison', 'Hiring and onboarding requirements', 'Review workflow and stakeholder sign-off']} primaryActionLabel="Open HR workflow" primaryActionTo="/app/engagements/new" />} />
-          <Route path="solutions/finance" element={<SolutionModulePage title="Finance Solutions" eyebrow="Specialized module" description="Bring financial planning, vendor spend analysis, and business case comparisons into the same expert-led research workspace." features={['Budget and cost baseline capture', 'Scenario comparison and ROI framing', 'Vendor or tool cost analysis', 'Executive review and approval steps']} primaryActionLabel="Start finance review" primaryActionTo="/app/engagements/new" />} />
-          <Route path="solutions/support" element={<SolutionModulePage title="Support Solutions" eyebrow="Specialized module" description="Coordinate support tooling, staffing, and service strategy decisions with evidence and customer-facing review gates." features={['Service model and support scope capture', 'Case volume and tooling analysis', 'Support workflow comparison', 'Expert approval before customer rollout']} primaryActionLabel="Launch support scenario" primaryActionTo="/app/engagements/new" />} />
+          <Route path="solutions/:slug" element={<SolutionDetailPage />} />
           <Route path="knowledge" element={<KnowledgeHubPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>

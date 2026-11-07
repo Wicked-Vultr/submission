@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowLeft, Target, Sparkles } from 'lucide-react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { getCustomers } from '../../lib/customerStorage'
@@ -27,7 +27,9 @@ const EMPTY_ENGAGEMENT: Omit<NewEngagementFormValues, 'customerId'> = {
 
 export default function NewEngagementPage() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [customers, setCustomers] = useState<Customer[]>([])
+  const preselectedSolution = searchParams.get('solution') ?? ''
 
   const {
     register,
@@ -53,11 +55,25 @@ export default function NewEngagementPage() {
     }
   }, [reset])
 
+  useEffect(() => {
+    if (!preselectedSolution) return
+
+    const solutionLabel = preselectedSolution.charAt(0).toUpperCase() + preselectedSolution.slice(1)
+    const title = `New ${solutionLabel} engagement`
+    const problem = `Assess the current ${solutionLabel.toLowerCase()} workflow and recommend the best path for improvement, stakeholder buy-in, and execution.`
+
+    reset((current) => ({
+      ...current,
+      title,
+      problemStatement: problem,
+    }))
+  }, [preselectedSolution, reset])
+
   function onSubmit(values: NewEngagementFormValues) {
     const now = new Date().toISOString()
     const engagement: Engagement = {
       id: `${Date.now()}`,
-      title: values.title.trim(),
+      title: values.title.trim() || `${preselectedSolution || 'Engagement'} scope`,
       customerId: values.customerId,
       problemStatement: values.problemStatement.trim(),
       objectives: values.objectives.trim(),

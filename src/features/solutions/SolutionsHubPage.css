@@ -112,6 +112,78 @@
   color: #475569;
 }
 
+.solutions-search-panel {
+  margin-bottom: 24px;
+}
+
+.solutions-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.solutions-search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #dfe7f3;
+  color: #64748b;
+}
+
+.solutions-search-field input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+}
+
+.solutions-category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.solutions-category-filter button {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #dfe7f3;
+  background: white;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.solutions-category-filter button.is-active {
+  background: linear-gradient(135deg, #eff6ff 0%, #ede9fe 100%);
+  border-color: rgba(99, 102, 241, 0.35);
+  color: #312e81;
+}
+
+.solutions-section {
+  margin-bottom: 28px;
+}
+
+.solutions-section-header {
+  margin-bottom: 14px;
+}
+
+.solutions-section-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
 .solutions-modules-head {
   margin-bottom: 16px;
 }
@@ -138,7 +210,6 @@
   align-items: stretch;
 }
 
-/* Reuse dashboard tiles; center the featured row and cap width */
 .solutions-hub-tiles {
   width: 100%;
   max-width: none;
@@ -197,12 +268,146 @@
   color: #334155;
 }
 
+.solutions-empty-state {
+  margin-top: 12px;
+}
+
+.solutions-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #d9e2f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #334155;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.solution-detail-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.solution-detail-card {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+.solution-detail-card--summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 130px;
+}
+
+.solution-detail-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.solution-detail-card p,
+.solution-detail-card li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.solution-detail-list {
+  list-style: disc;
+  padding-left: 18px;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.solution-card-grid-item {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #fff 0%, #f8fafc 100%);
+}
+
+.solution-card-grid-item h3 {
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.solution-card-grid-item p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.capability-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.solution-detail-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.solution-tile-icon--green {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.solution-tile-icon--blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.solution-tile-icon--purple {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.solution-tile-icon--orange {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.solutions-bottom-cta {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 12px;
+}
+
 @media (max-width: 900px) {
   .solutions-hero {
     grid-template-columns: 1fr;
   }
 
-  .solutions-modules-grid {
+  .solutions-modules-grid,
+  .solution-detail-overview,
+  .solution-grid {
     grid-template-columns: 1fr;
   }
 }
