@@ -131,6 +131,16 @@ Open the local URL printed by Vite, usually `http://localhost:5173`.
 
 The sign-in screen is currently a demo flow: enter a valid-looking email and a password that satisfies the form validation. The app stores a local session in the browser; this does not create or authenticate a backend user.
 
+## One-click start (Windows)
+
+On Windows, double-click `start.bat` in the project folder. It checks for Node.js/npm and Python, creates the local `.venv` if needed, installs missing dependencies, opens separate API and frontend terminal windows, and opens the frontend in your browser.
+
+- Frontend: `http://localhost:5173`
+- API documentation: `http://localhost:8000/docs`
+- To stop the app, close both ProcureIQ terminal windows.
+
+The first launch needs an internet connection if dependencies are not already installed. This launcher is for local development/demo use.
+
 Useful frontend commands:
 
 ```powershell
