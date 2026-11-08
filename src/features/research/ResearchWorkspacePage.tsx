@@ -32,7 +32,16 @@ export default function ResearchWorkspacePage() {
     if (engagement.status !== 'research') {
       updateEngagement({ ...engagement, status: 'research' })
     }
-    void startResearch()
+    const brief = [
+      `Procurement research for: ${engagement.title}`,
+      `Requirement: ${engagement.problemStatement}`,
+      engagement.objectives && `Objectives: ${engagement.objectives}`,
+      engagement.constraints && `Constraints: ${engagement.constraints}`,
+      engagement.successMetrics && `Success metrics: ${engagement.successMetrics}`,
+    ]
+      .filter(Boolean)
+      .join('\n')
+    void startResearch(brief)
   }
 
   return (
