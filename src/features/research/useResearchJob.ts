@@ -112,7 +112,7 @@ export function useResearchJob(engagementId: string) {
     setSnapshot(next)
   }, [])
 
-  const startResearch = useCallback(async () => {
+  const startResearch = useCallback(async (brief: string) => {
     cancelMockRef.current = false
     eventSourceRef.current?.close()
 
@@ -143,7 +143,7 @@ export function useResearchJob(engagementId: string) {
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({}),
+          body: JSON.stringify({ brief }),
         }
       )
 
