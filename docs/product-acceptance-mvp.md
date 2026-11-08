@@ -9,7 +9,7 @@ This file maps **blueprint §16 MVP** and **§12 Testing** to **what “done” 
 | 1 | Roles concept (Admin / Expert / Customer) reflected in UX (demo: Expert path) | Product + FE | Demo script |
 | 2 | Create customer | FE (+ BE when live) | Checklist §3 |
 | 3 | Create engagement + structured scope fields | FE (+ BE) | Checklist §4 |
-| 4 | Run CHRONICLE research + visible progress | BE + FE | SSE or demo sim |
+| 4 | Run supplier research + visible progress | BE + FE | SSE or demo sim |
 | 5 | ≥3 options with sources + comparison | BE + FE | Findings + table/chart |
 | 6 | Recommendation + roadmap | FE (+ BE) | Rec + Roadmap tabs |
 | 7 | Expert review → customer review (approve / changes) | FE (+ BE) | Review tab |

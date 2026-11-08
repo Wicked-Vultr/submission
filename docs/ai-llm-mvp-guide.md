@@ -17,16 +17,15 @@
 | Task | Input | Output schema (concept) | Notes |
 |------|--------|-------------------------|--------|
 | `scope_assistant` | Engagement scope fields | objectives[], constraints, success_metrics[], open_questions[] | Expert edits before research |
-| `research_plan` | Approved brief | topics[], entities[], query_groups[] | Feeds CHRONICLE adapter |
+| `research_plan` | Approved brief | topics[], entities[], query_groups[] | Feeds supplier research workflow |
 | `extract_facts` | Raw snippets + URLs | claims[], confidence, validation_status | Evidence service |
 | `compare_options` | Normalized entities + criteria | matrix + weights + rationale text | Matches comparison UI |
 | `recommendation_draft` | Validated findings + priorities | options[], recommended_id, risks[] | Expert review before customer |
 | `roadmap_draft` | Approved recommendation | phases[], milestones[] | Expert edits |
 
-## CHRONICLE vs LLM
-
-- **CHRONICLE** = research pipeline (8 phases), job_id, SSE progress, findings (**`chronicle_adapter`**).
-- **LLM** = scoping, extraction helpers, drafting recommendations *from normalized evidence* — not a replacement for CHRONICLE unless product explicitly changes.
+## Research workflow vs LLM
+- **Research workflow** = supplier discovery and evaluation pipeline, job ID, progress updates, and source-backed findings.
+- **LLM** = scoping, extraction helpers, and drafting recommendations *from normalized evidence*; deterministic application logic remains responsible for permissions, scoring, and status changes.
 
 ## Evaluation checklist (minimal)
 

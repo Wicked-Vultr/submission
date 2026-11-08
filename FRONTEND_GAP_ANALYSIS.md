@@ -2,7 +2,7 @@
 
 ## Executive summary
 
-The Expert Intelligence Assistant frontend is largely present and structurally sound: Vite + React + TypeScript + React Router + Tailwind-backed styling are in place, auth/session flow exists, protected routes work, a dashboard and core engagement/customer flows exist, and the CHRONICLE research simulation is implemented. The codebase is not a blank slate; it is a partially complete demo-grade enterprise dashboard with many real product flows already scaffolded.
+The ProcureIQ frontend is largely present and structurally sound: Vite + React + TypeScript + React Router + Tailwind-backed styling are in place, a demo session flow exists, protected routes work, and the dashboard and core procurement/customer workflows are scaffolded. The research progress experience is simulated in demo mode.
 
 The main gaps are not “missing framework” issues but product completeness and integration-readiness issues:
 
@@ -41,7 +41,7 @@ The main gaps are not “missing framework” issues but product completeness an
 | Customer management | COMPLETE | Customer list, create flow, validation, and storage exist. |
 | Engagement management | COMPLETE | Create/list/overview workspace and routing are implemented. |
 | Problem scoping | COMPLETE | New engagement form covers title, problem, objectives, constraints, metrics, stakeholders. |
-| CHRONICLE research | COMPLETE | Eight-phase simulation and findings storage exist. |
+| Supplier research | COMPLETE | Eight-phase simulation and findings storage exist. |
 | Recommendations | COMPLETE | Draft generation exists and expert review state is supported. |
 | Roadmap | COMPLETE | Roadmap generation from recommendation is implemented. |
 | Collaboration and customer review | COMPLETE | Review flows exist for approve/request changes. |
@@ -163,7 +163,7 @@ What needs improvement:
 
 Priority: Medium
 
-### 6. CHRONICLE research workspace
+### 6. Supplier research workspace
 Status: COMPLETE
 
 What exists:
@@ -182,7 +182,7 @@ Files involved:
 - `src/features/research/useResearchJob.ts`
 - `src/features/research/ResearchWorkspacePage.tsx`
 - `src/lib/findingsStorage.ts`
-- `src/features/research/chroniclePhases.ts`
+- `src/features/research/researchPhases.ts`
 
 Priority: Critical
 
@@ -342,7 +342,7 @@ Priority: Medium
 ### Phase 1: Critical and workflow-critical work
 1. Harden browser storage and data access (`src/lib/storage.ts` + related modules)
 2. Finish engagement workflow reliability and edit patterns
-3. Finalize CHRONICLE research integration and error status UX
+3. Finalize supplier research integration and error status UX
 4. Improve route and session reliability for auth
 
 ### Phase 2: Core product workflow

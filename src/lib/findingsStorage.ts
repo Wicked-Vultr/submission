@@ -93,7 +93,7 @@ export function seedFindingsForEngagement(engagementId: string, title: string): 
   const comparisons = loadAllComparisons().filter((c) => c.engagementId !== engagementId)
   writeStorage(COMPARISON_KEY, [...comparisons, comparison])
 
-  logActivity(`CHRONICLE research completed for "${title}"`, engagementId)
+  logActivity(`Supplier research completed for "${title}"`, engagementId)
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new CustomEvent('eia-findings-updated', { detail: engagementId }))
   }

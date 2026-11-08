@@ -1,6 +1,6 @@
-# Expert Intelligence Assistant — MVP QA checklist
+# ProcureIQ — MVP QA checklist
 
-Use this for **hackathon demo prep** and **acceptance** before judges. Check each box when verified on **localhost** or **staging**. Notes in brackets mark **demo-only** behaviour (localStorage, mock CHRONICLE) vs **production** (real API).
+Use this for **hackathon demo prep** and **acceptance** before judges. Check each box when verified on **localhost** or **staging**. Notes in brackets mark **demo-only** behaviour (localStorage, simulated research) vs **production** (real API).
 
 ---
 
@@ -50,7 +50,7 @@ For one test engagement, verify all tabs load without console errors:
 | Tab | Pass criteria |
 |-----|----------------|
 | Overview | Problem brief fields render; “Open research workspace” link works; Export panel visible |
-| Research | Start CHRONICLE shows progress; completes (demo simulation if API down) |
+| Research | Start supplier research shows progress; completes (demo simulation if API down) |
 | Findings | After research complete: ≥3 entities, source links, comparison table + chart |
 | Recommendations | Generate draft works; “Mark ready for customer review” updates flow |
 | Roadmap | Generate from recommendation shows milestones |
@@ -61,7 +61,7 @@ For one test engagement, verify all tabs load without console errors:
 
 ---
 
-## 6. CHRONICLE / research (current build)
+## 6. Supplier research (current build)
 
 **Demo (no backend):**
 
@@ -132,7 +132,7 @@ For one test engagement, verify all tabs load without console errors:
 5. Customer review → approve or request changes.  
 6. Roadmap → show milestones.  
 7. Settings / sign out (optional).  
-8. One sentence on **next**: backend API + real CHRONICLE adapter + Vultr deploy.
+8. One sentence on **next**: backend API + verified research integrations + Vultr deploy.
 
 ---
 
@@ -147,4 +147,4 @@ For one test engagement, verify all tabs load without console errors:
 
 ---
 
-*Aligned with the EIA technical blueprint (workspace, engagements, CHRONICLE research, evidence, recommendations, roadmap, customer review, exports). Adjust rows when production APIs replace localStorage.*
+*Aligned with the ProcureIQ product scope (purchase requests, supplier research, evidence, comparisons, approvals, and procurement records). Adjust rows when production APIs replace localStorage.*

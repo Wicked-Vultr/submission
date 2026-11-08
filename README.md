@@ -1,30 +1,26 @@
-# Expert Intelligence Assistant (EIA)
+# ProcureIQ
 
-Expert Intelligence Assistant is an expert-led research and decision-support workspace. It helps teams turn a customer or business challenge into a structured engagement, collect and organize evidence, compare options, and prepare recommendations for human review.
+ProcureIQ is an expert-led procurement intelligence workspace. It helps teams turn purchasing needs into structured requests, research suppliers, organize evidence, compare options transparently, and prepare recommendations for human review.
 
-The project also includes **ProcureIQ**, a procurement-focused module that applies the same engagement, research, evidence, and approval concepts to purchasing decisions. It is designed to help an expert clarify a purchase need, compare suppliers transparently, and prepare RFQs and purchase-order records without falsely claiming that an external action has taken place.
-
-> **In simple terms:** EIA helps people make better business decisions using organized research and traceable evidence. ProcureIQ applies that idea to buying products and services.
+> **In simple terms:** ProcureIQ helps organizations make better purchasing decisions using organized supplier research, traceable evidence, transparent scoring, and expert approvals.
 
 ## Project idea
 
-Organizations often make important decisions using scattered documents, web searches, spreadsheets, and informal conversations. That makes it hard to understand what is known, where a claim came from, what information is missing, and who approved the final recommendation.
+Organizations often make purchases using scattered documents, web searches, spreadsheets, and informal conversations. That makes it hard to compare suppliers fairly, trace claims to sources, understand what information is missing, and know who approved the final recommendation.
 
-EIA brings that work into one guided process:
+ProcureIQ brings that work into one guided process:
 
-1. Record a customer and create an engagement around a business need.
+1. Capture a purchase request, customer, product requirements, budget, and delivery needs.
 2. Define the scope, objectives, constraints, and questions that need research.
-3. Organize research jobs and findings, including their source references.
-4. Compare available options and prepare recommendations and a roadmap.
-5. Let an expert review the work before it is presented as a final recommendation.
+3. Organize supplier research and findings, including their source references.
+4. Compare vendors and prepare recommendations, RFQs, and purchase-order records.
+5. Let an expert review decisions before they are treated as final or sent externally.
 
-For procurement, the same process can capture a purchase request, record vendors and research, compare vendors using configurable weights, and manage RFQ, approval, and purchase-order records. Missing evidence should remain visible as missing; it should not automatically be treated as a confirmed negative.
+Missing evidence remains visible as missing; it is not automatically treated as a confirmed negative.
 
 ### Roman Urdu summary
 
-EIA aik aisa workspace hai jo business problems ko structured research aur evidence ke zariye samajhne aur un par behtar decisions lene mein madad karta hai. Expert customer engagement banata hai, requirements aur research questions define karta hai, findings aur sources organize karta hai, phir options compare karke recommendation tayyar karta hai. Final decision aur customer ko share karna expert review ke baad hota hai.
-
-ProcureIQ isi idea ko purchasing ke liye use karta hai: purchase request, vendor research, transparent scoring, RFQ drafts, approvals, aur purchase-order tracking. Baghair real integration ke system yeh claim nahi karta ke RFQ bhej di gayi ya order place ho gaya.
+ProcureIQ purchasing ke liye aik expert-led workspace hai. Yeh purchase request aur requirements record karta hai, suppliers ki research aur sources organize karta hai, vendors ko clear criteria ke zariye compare karta hai, aur approvals manage karta hai. Expert review ke baghair recommendation ko final nahi samjha jata. Real integration na ho to system yeh claim nahi karta ke RFQ bhej di gayi ya order place ho gaya.
 
 ## Product principles
 
@@ -33,11 +29,11 @@ ProcureIQ isi idea ko purchasing ke liye use karta hai: purchase request, vendor
 - **Transparent evaluation:** Comparison weights and criterion scores should be visible and explainable.
 - **Honest uncertainty:** Estimated, verified, and unavailable information should be distinguishable.
 - **No fabricated actions:** Creating an RFQ or purchase-order record is not the same as sending an RFQ or placing a real order.
-- **Shared EIA foundation:** ProcureIQ reuses customers, engagements, research, and review concepts rather than creating a separate duplicate product.
+- **Procurement-first:** Requests, vendors, research, comparisons, and approvals are presented as one ProcureIQ workflow.
 
 ## Current project status
 
-This repository contains a working React frontend and a FastAPI backend foundation. The frontend is primarily a demo-mode experience that stores much of its workspace data in browser storage. The backend has authenticated API foundations and procurement data models/endpoints, but it is not yet a production-connected research or procurement system.
+This repository contains a working React frontend and a FastAPI backend foundation for ProcureIQ. The frontend is primarily a demo-mode experience that stores much of its workspace data in browser storage. The backend has authenticated API foundations and procurement data models/endpoints, but it is not yet a production-connected research or procurement system.
 
 In particular:
 
@@ -46,7 +42,7 @@ In particular:
 - The ProcureIQ frontend route is currently a workflow overview/entry point, not yet a full procurement console connected to these APIs.
 - The backend currently creates tables with SQLAlchemy `create_all`; Alembic is listed as a dependency, but production migration files/workflow are not yet established.
 - LLM configuration exists, but the current service has a mock implementation and does not yet call a verified external provider.
-- Procurement discovery records can be stored, but a real vendor discovery worker or CHRONICLE integration is not configured.
+- Procurement discovery records can be stored, but a real vendor discovery worker is not configured.
 - The procurement comparison endpoint currently uses illustrative criterion values; do not treat these as researched vendor scores.
 - RFQs are records/drafts. There is no verified vendor delivery integration, and the API does not send them externally.
 - Purchase orders are manually maintained records. There is no external purchasing integration.
@@ -184,11 +180,11 @@ Common backend settings include:
 
 | Variable | Purpose | Current default/notes |
 |---|---|---|
-| `APP_NAME` | API display name | Expert Intelligence Assistant API |
+| `APP_NAME` | API display name | ProcureIQ API |
 | `APP_ENV` | Environment label | `development` |
 | `DEBUG` | FastAPI debug mode | `false` |
 | `API_PREFIX` | Versioned API prefix | `/api/v1` |
-| `DATABASE_URL` | SQLAlchemy database URL | `sqlite:///./eia.db` |
+| `DATABASE_URL` | SQLAlchemy database URL | `sqlite:///./eia.db` (legacy local filename) |
 | `REDIS_URL` | Redis connection URL | `redis://localhost:6379/0` |
 | `CORS_ALLOWED_ORIGINS` | Comma-separated browser origins | Local Vite origins |
 | `JWT_SECRET_KEY` | JWT signing secret | Replace before deployment |
@@ -322,7 +318,7 @@ Before deploying with real customers or procurement data:
 - Connect frontend authentication and feature data flows to the backend APIs.
 - Complete tenant-aware authorization and role/approval policies.
 - Establish Alembic migrations and production PostgreSQL configuration.
-- Connect an asynchronous research workflow and a verified CHRONICLE adapter.
+- Connect an asynchronous supplier-research workflow and verify its integrations.
 - Implement configurable, provider-tested LLM integrations and structured outputs.
 - Replace illustrative vendor scoring inputs with evidence-backed data and explanations.
 - Add quotation capture, RFQ approval lifecycle, and audited manual workflow transitions.

@@ -19,8 +19,8 @@ export default function Sidebar() {
       <div className="sidebar-brand">
         <div className="brand-icon brand-icon--gradient">∞</div>
         <div className="sidebar-brand-text">
-          <span className="sidebar-brand-title">Expert Intelligence</span>
-          <span className="sidebar-brand-sub">Assistant</span>
+          <span className="sidebar-brand-title">ProcureIQ</span>
+          <span className="sidebar-brand-sub">Procurement Intelligence</span>
         </div>
       </div>
 
@@ -135,9 +135,9 @@ export default function Sidebar() {
         </NavLink>
       </nav>
 
-      <div className="sidebar-chronicle">
-        <p className="sidebar-chronicle-label">Powered by CHRONICLE</p>
-        <p className="sidebar-chronicle-sub">Research · Discover · Recommend</p>
+      <div className="sidebar-product-note">
+        <p className="sidebar-product-note-label">Procurement Intelligence</p>
+        <p className="sidebar-product-note-sub">Research · Compare · Decide</p>
       </div>
     </aside>
   )

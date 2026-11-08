@@ -1,7 +1,7 @@
 # Backend Implementation Report
 
 ## Scope
-This repository did not contain an existing backend. A minimum viable backend foundation was created to satisfy the provided EIA backend specification and support frontend integration.
+This repository did not contain an existing backend. A minimum viable backend foundation was created to support ProcureIQ and frontend integration.
 
 ## Implemented
 - FastAPI application startup and route registration
@@ -34,6 +34,6 @@ This repository did not contain an existing backend. A minimum viable backend fo
 - Replace SQLite with PostgreSQL in production
 - Add real JWT refresh flow, RBAC enforcement, and workspace membership logic
 - Add full CRUD and permission coverage for all tables
-- Integrate actual CHRONICLE and Vultr LLM provider
+- Integrate a real supplier-research service and a verified LLM provider
 - Add Docker/Compose and Nginx deployment config
 - Add full test coverage and migration setup

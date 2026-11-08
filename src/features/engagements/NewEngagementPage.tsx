@@ -105,8 +105,8 @@ export default function NewEngagementPage() {
             New engagement
           </h1>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Frame the problem so CHRONICLE can plan research with clear objectives and evidence
-            targets.
+            Describe the purchasing need clearly so research can focus on relevant suppliers,
+            requirements, and evidence.
           </p>
         </div>
         <Button variant="outline" size="sm" asChild>
@@ -214,7 +214,7 @@ export default function NewEngagementPage() {
                   Scope & stakeholders
                 </h2>
                 <p className="text-sm text-muted-foreground">
-                  Objectives and constraints shape CHRONICLE&apos;s research plan and exports.
+                  Objectives and constraints shape the supplier research plan and exports.
                 </p>
               </div>
             </div>

@@ -56,7 +56,7 @@ export default function EngagementsPage() {
           <p className="engagements-eyebrow">Workspace</p>
           <h1>Engagements</h1>
           <p className="engagements-lead">
-            Each engagement is a scoped mission: problem brief → CHRONICLE research →
+            Each engagement is a scoped mission: purchase brief → supplier research →
             evidence → recommendations → customer review.
           </p>
           <div className="engagements-hero-actions">
@@ -110,7 +110,7 @@ export default function EngagementsPage() {
             </div>
             <h2>No engagements yet</h2>
             <p>
-              Create an engagement to capture the customer challenge and run CHRONICLE
+              Create an engagement to capture the purchasing need and organize supplier
               research with traceable evidence.
             </p>
             <Link to="/app/engagements/new" className="engagements-primary-btn">

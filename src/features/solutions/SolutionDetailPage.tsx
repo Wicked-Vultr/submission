@@ -60,7 +60,7 @@ export default function SolutionDetailPage() {
           </div>
           <div className="solutions-mini-stat">
             <span className="solutions-mini-label">Engine</span>
-            <strong>CHRONICLE</strong>
+            <strong>ProcureIQ</strong>
           </div>
         </div>
       </section>
@@ -69,7 +69,7 @@ export default function SolutionDetailPage() {
         <div className="panel-heading" style={{ marginBottom: '18px' }}>
           <div>
             <h2>Overview</h2>
-            <p>Built around the same engagement, evidence, and approval model as the rest of EIA.</p>
+            <p>Built around procurement requests, supplier evidence, comparisons, and expert approvals.</p>
           </div>
         </div>
 
@@ -146,13 +146,13 @@ export default function SolutionDetailPage() {
       <section className="dashboard-panel">
         <div className="panel-heading" style={{ marginBottom: '20px' }}>
           <div>
-            <h2>CHRONICLE intelligence</h2>
+            <h2>Research capabilities</h2>
             <p>The shared research and synthesis engine behind the specialized workflow.</p>
           </div>
         </div>
 
         <div className="solution-grid capability-grid">
-          {solution.chronicleCapabilities.map(({ name, description, icon: Icon }) => (
+          {solution.researchCapabilities.map(({ name, description, icon: Icon }) => (
             <article key={name} className="solution-card-grid-item">
               <div className="solution-detail-icon-wrap">
                 <Icon size={18} />

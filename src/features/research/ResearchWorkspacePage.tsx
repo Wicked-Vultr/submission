@@ -38,9 +38,8 @@ export default function ResearchWorkspacePage() {
   return (
     <>
       <div className="draft-banner" role="status">
-        CHRONICLE runs an eight-phase pipeline. Live progress uses SSE when the
-        backend is connected; otherwise a local demo simulation runs for UI
-        development.
+        Supplier research follows an eight-phase workflow. Live progress uses SSE when the
+        backend is connected; otherwise a local demo simulation runs for UI development.
       </div>
 
       <section className="dashboard-panel research-panel">
@@ -69,7 +68,7 @@ export default function ResearchWorkspacePage() {
               ) : (
                 <>
                   <Play size={16} />
-                  {isComplete ? 'Run again' : 'Start CHRONICLE research'}
+                  {isComplete ? 'Run again' : 'Start supplier research'}
                 </>
               )}
             </button>
@@ -123,7 +122,7 @@ export default function ResearchWorkspacePage() {
             <Link to={`/app/engagements/${engagement.id}/findings`}>
               Findings
             </Link>{' '}
-            once the backend normalizes CHRONICLE output (demo UI ready).
+            once supplier research output is normalized (demo UI ready).
           </p>
         )}
       </section>

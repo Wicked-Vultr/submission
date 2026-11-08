@@ -10,7 +10,7 @@ The app already had a basic Solutions hub and a few module routes, but the imple
 
 ### Complete
 - Core route structure exists for the Solutions hub and several module pages.
-- The app retains the EIA dashboard styling and uses the same design language.
+- The app retains the ProcureIQ dashboard styling and uses the same design language.
 - The main package and route architecture are stable and reusable.
 - The engagement creation workflow already exists and can be reused for solution-based launches.
 
@@ -23,7 +23,7 @@ The app already had a basic Solutions hub and a few module routes, but the imple
 ### Missing
 - Search by solution name, category, capabilities, and keywords.
 - Category filter controls and clear-state behavior.
-- Dedicated reusable detail pages for each solution with overview, workflows, requirements, and CHRONICLE explanation.
+- Dedicated reusable detail pages for each solution with overview, workflows, requirements, and research capability descriptions.
 - Featured, active, and recently-used solution sections with proper empty states.
 - Direct integration between a solution card and the New Engagement workflow.
 - API contract documentation for the solution catalogue and user-specific lists.

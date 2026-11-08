@@ -6,12 +6,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "Expert Intelligence Assistant API"
+    app_name: str = "ProcureIQ API"
     app_env: str = "development"
     version: str = "0.1.0"
     debug: bool = False
     api_prefix: str = "/api/v1"
-    project_name: str = "eia"
+    project_name: str = "procureiq"
     secret_key: str = "change-me-in-production"
     database_url: str = "sqlite:///./eia.db"
     redis_url: str = "redis://localhost:6379/0"

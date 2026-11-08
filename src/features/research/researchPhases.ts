@@ -1,7 +1,7 @@
 import type { ResearchPhaseState } from '../../types/engagement'
 
-/** CHRONICLE eight-phase pipeline labels (aligned with backend chronicle_adapter). */
-export const CHRONICLE_PHASES: Omit<ResearchPhaseState, 'status'>[] = [
+/** Eight-phase supplier research workflow labels. */
+export const RESEARCH_PHASES: Omit<ResearchPhaseState, 'status'>[] = [
   {
     id: 'plan',
     label: 'Plan',
@@ -45,5 +45,5 @@ export const CHRONICLE_PHASES: Omit<ResearchPhaseState, 'status'>[] = [
 ]
 
 export function createInitialPhases(): ResearchPhaseState[] {
-  return CHRONICLE_PHASES.map((phase) => ({ ...phase, status: 'pending' }))
+  return RESEARCH_PHASES.map((phase) => ({ ...phase, status: 'pending' }))
 }

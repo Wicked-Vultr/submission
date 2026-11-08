@@ -1,1 +1,1 @@
-"""Expert Intelligence Assistant backend package."""
+"""ProcureIQ backend package."""

@@ -52,7 +52,7 @@ export default function FindingsPage() {
             <FileSearch size={30} />
             <h3>No findings stored yet</h3>
             <p>
-              Run CHRONICLE research on the Research tab. When the job completes,
+              Run supplier research on the Research tab. When the job completes,
               normalized entities appear here.
             </p>
           </div>
@@ -62,7 +62,7 @@ export default function FindingsPage() {
           <section className="dashboard-panel">
             <h2>Evidence ({findings.length} options)</h2>
             <p className="form-description">
-              Structured output from CHRONICLE deep dive — 15+ attributes where
+              Structured output from the supplier research deep dive — 15+ attributes where
               available.
             </p>
             <div className="findings-grid">

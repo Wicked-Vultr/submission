@@ -50,7 +50,7 @@ export function generateRecommendationDraft(
       : [finding.cons],
     scoreExplanation: comparison
       ? `Weighted score ${weightedTotal(comparison, finding.id)}/100 using workspace criteria.`
-      : `Depth score ${Math.round(finding.depthScore * 100)}% from CHRONICLE.`,
+      : `Research depth score: ${Math.round(finding.depthScore * 100)}%.`,
     recommended: index === 0,
   }))
 

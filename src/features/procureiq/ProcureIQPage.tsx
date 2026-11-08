@@ -24,7 +24,7 @@ const STEPS = [
   },
   {
     title: 'Research',
-    body: 'CHRONICLE runs vendor/product intelligence with source-backed evidence.',
+    body: 'ProcureIQ organizes vendor and product research with source-backed evidence.',
     icon: Microscope,
   },
   {
@@ -49,10 +49,8 @@ export default function ProcureIQPage() {
         </div>
         <h1>ProcureIQ</h1>
         <p className="procureiq-lead">
-          Procurement workflow that reuses <strong>customers</strong>,{' '}
-          <strong>engagements</strong>, <strong>CHRONICLE research</strong>,{' '}
-          <strong>evidence</strong>, and <strong>approvals</strong>—the blueprint&apos;s optional
-          procurement demo, without inventing fake purchase completions.
+          Procurement workspace for purchase requests, supplier research, evidence-based
+          comparisons, RFQ drafts, and approvals—without inventing purchase completions.
         </p>
         <div className="procureiq-hero-actions">
           <Link to="/app/engagements/new" className="procureiq-primary-btn">

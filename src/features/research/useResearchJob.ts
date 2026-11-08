@@ -5,7 +5,7 @@ import type {
   ResearchJobSnapshot,
   ResearchPhaseId,
 } from '../../types/engagement'
-import { createInitialPhases } from './chroniclePhases'
+import { createInitialPhases } from './researchPhases'
 
 const STORAGE_PREFIX = 'eia_research_job_'
 

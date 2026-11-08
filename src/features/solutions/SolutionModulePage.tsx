@@ -44,7 +44,7 @@ export default function SolutionModulePage({
         <div className="panel-heading">
           <div>
             <h2>What this module supports</h2>
-            <p>Structured around the same engagement + evidence model as the rest of EIA.</p>
+            <p>Structured around ProcureIQ's evidence-first, expert-reviewed workflow.</p>
           </div>
         </div>
 

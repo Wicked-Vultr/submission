@@ -51,11 +51,11 @@ export default function SignInPage() {
             Expert-led · Evidence-first · Human approvals
           </div>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Expert Intelligence Assistant
+            ProcureIQ
           </h1>
           <p className="text-sm leading-relaxed text-slate-300">
-            Sign in to your workspace. CHRONICLE accelerates research, but experts stay in
-            control—nothing is presented to customers until it&apos;s reviewed.
+            Sign in to your procurement workspace. ProcureIQ organizes supplier research and
+            comparisons while experts stay in control of every customer-facing decision.
           </p>
           <ul className="space-y-2 text-sm text-slate-300">
             <li className="flex gap-2">
@@ -64,7 +64,7 @@ export default function SignInPage() {
             </li>
             <li className="flex gap-2">
               <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-violet-400" />
-              <span>Demo mode uses local session until your team connects auth API.</span>
+              <span>Procurement decisions supported by research, evidence, and expert review.</span>
             </li>
           </ul>
           <p className="text-xs text-slate-500">

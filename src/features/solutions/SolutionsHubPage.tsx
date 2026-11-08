@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowUpRight,
-  Clock,
   LayoutGrid,
   Search,
   Sparkles,
@@ -16,7 +15,6 @@ import {
   RECENTLY_USED_SOLUTION_IDS,
   SOLUTION_CATALOG,
   SOLUTION_CATEGORIES,
-  type SolutionCategory,
 } from './solutionCatalog'
 
 const EMPTY_STATE_MESSAGE = 'No solutions match your search.'
@@ -72,7 +70,7 @@ export default function SolutionsHubPage() {
             </span>
             <span className="solutions-meta-pill solutions-meta-pill--muted">
               <Sparkles size={14} aria-hidden />
-              Shared CHRONICLE research engine
+              Shared ProcureIQ research workspace
             </span>
           </div>
         </div>
@@ -285,7 +283,7 @@ export default function SolutionsHubPage() {
             </div>
 
             <aside className="solutions-roadmap-card" aria-label="Solution roadmap">
-              <p className="solutions-roadmap-eyebrow">CHRONICLE</p>
+              <p className="solutions-roadmap-eyebrow">ProcureIQ</p>
               <h3 className="solutions-roadmap-title">Specialized workstreams</h3>
               <p className="solutions-roadmap-text">
                 Each module builds on the same research, evidence, and customer approval flow rather than creating a separate engine.

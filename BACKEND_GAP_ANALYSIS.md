@@ -18,7 +18,7 @@ The repository currently contains only the frontend application. There is no bac
 - Authentication and authorization.
 - SQLAlchemy models and migrations.
 - Customer and engagement management APIs.
-- CHRONICLE research job orchestration layer.
+- Supplier research job orchestration layer.
 - LLM provider abstraction.
 - Background jobs and SSE polling integration.
 - Procurement/ProcureIQ workflows.

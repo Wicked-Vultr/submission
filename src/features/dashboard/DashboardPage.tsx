@@ -80,7 +80,7 @@ export default function DashboardPage() {
           <p className="dashboard-eyebrow dashboard-eyebrow--hero">
             Expert-led workspace
           </p>
-          <h1 id="dashboard-hero-title">Welcome to Expert Intelligence Assistant</h1>
+          <h1 id="dashboard-hero-title">Welcome to ProcureIQ</h1>
           <p className="dashboard-hero-lead">
             Collaborate with AI-accelerated research, traceable evidence, and
             human approval gates—before anything reaches your customer.
@@ -103,7 +103,7 @@ export default function DashboardPage() {
             <p className="hero-card-title">Mission control</p>
             <p className="hero-card-sub">Plan → Research → Recommend → Approve</p>
             <div className="hero-mini-stats">
-              <span>CHRONICLE</span>
+              <span>ProcureIQ</span>
               <span>8 phases</span>
             </div>
           </div>
@@ -196,8 +196,8 @@ export default function DashboardPage() {
             <div className="solution-tile-body">
               <h3>ProcureIQ</h3>
               <p>
-                Vendor research, weighted comparison, and RFQ-style drafts on top of the same
-                engagements and CHRONICLE pipeline.
+                Vendor research, weighted comparison, and RFQ-style drafts within one
+                expert-reviewed procurement workflow.
               </p>
             </div>
             <span className="solution-tile-cta">

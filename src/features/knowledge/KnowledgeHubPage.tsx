@@ -5,7 +5,7 @@ import '../dashboard/DashboardPage.css'
 const RESOURCES = [
   {
     title: 'Research history',
-    description: 'Track completed CHRONICLE runs, evidence sets, and source-backed decisions across engagements.',
+    description: 'Track completed research, evidence sets, and source-backed decisions across procurement requests.',
     meta: '12 items',
     icon: BookOpen,
   },

@@ -22,7 +22,7 @@ export default function EngagementOverviewPage() {
         <div className="panel-heading" style={{ marginBottom: '20px' }}>
           <div>
             <h2>Problem brief</h2>
-            <p>Scope confirmed by the Expert before CHRONICLE research runs.</p>
+            <p>Scope confirmed by the expert before supplier research begins.</p>
           </div>
           <Link
             to={`/app/engagements/${engagement.id}/research`}

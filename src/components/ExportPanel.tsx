@@ -103,7 +103,7 @@ export default function ExportPanel({ engagementId }: ExportPanelProps) {
         ))}
       </div>
       {!canExport && (
-        <p className="export-hint">Complete CHRONICLE research to enable exports.</p>
+        <p className="export-hint">Complete supplier research to enable exports.</p>
       )}
     </section>
   )

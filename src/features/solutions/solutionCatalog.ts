@@ -50,7 +50,7 @@ export interface SolutionDefinition {
   workflow: SolutionWorkflowStep[]
   requirements: string[]
   useCases: string[]
-  chronicleCapabilities: {
+  researchCapabilities: {
     name: string
     description: string
     icon: LucideIcon
@@ -92,7 +92,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
     workflow: [
       { title: 'Capture request', description: 'Customer submits quantity, timing, and specification requirements.' },
       { title: 'Define scope', description: 'Expert identifies constraints, evaluation criteria, and success factors.' },
-      { title: 'Research', description: 'CHRONICLE creates a research plan and evaluates supplier options.' },
+      { title: 'Research', description: 'ProcureIQ creates a research plan and evaluates supplier options.' },
       { title: 'Compare', description: 'AI summarizes options, pricing, warranties, and delivery trade-offs.' },
       { title: 'Review and approve', description: 'Human expert reviews the final recommendation before any action.' },
     ],
@@ -108,7 +108,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
       'Compare competing vendors for an infrastructure refresh',
       'Prepare a cleaner RFQ package with weighted scoring and assumptions',
     ],
-    chronicleCapabilities: [
+    researchCapabilities: [
       { name: 'Research', description: 'Build a focused research plan across the vendor landscape.', icon: Search },
       { name: 'Compare', description: 'Assess supplier fit, warranty, pricing, and delivery trade-offs.', icon: ChartNoAxesCombined },
       { name: 'Validate', description: 'Cross-check supplier claims against sources and dependencies.', icon: ShieldCheck },
@@ -148,7 +148,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
     workflow: [
       { title: 'Map needs', description: 'Capture hiring goals, role scope, and team constraints.' },
       { title: 'Assess process', description: 'Analyze the current recruiting and onboarding experience.' },
-      { title: 'Research tools', description: 'CHRONICLE reviews hiring platforms, ATS options, and workflow patterns.' },
+      { title: 'Research tools', description: 'Research reviews hiring platforms, ATS options, and workflow patterns.' },
       { title: 'Compare options', description: 'Evaluate vendor fit against cost, integration, and staffing demands.' },
       { title: 'Recommend', description: 'Draft a decision-ready plan for expert and stakeholder approval.' },
     ],
@@ -164,7 +164,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
       'Compare talent acquisition tools across ATS and workflow platforms',
       'Improve onboarding and role readiness across a growing team',
     ],
-    chronicleCapabilities: [
+    researchCapabilities: [
       { name: 'Discover', description: 'Find candidate workflows, platform options, and market patterns.', icon: Search },
       { name: 'Deep Dive', description: 'Investigate workflow pain points, vendor claims, and adoption trade-offs.', icon: ClipboardList },
       { name: 'Synthesize', description: 'Turn research into decision-ready recommendations and stakeholder context.', icon: MessageSquareText },
@@ -204,7 +204,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
     workflow: [
       { title: 'Define workflow', description: 'Document the finance challenge, constraints, and required outcomes.' },
       { title: 'Collect signals', description: 'Assess current process, tooling, and bottlenecks in the operating model.' },
-      { title: 'Research alternatives', description: 'CHRONICLE evaluates financial software and process patterns.' },
+      { title: 'Research alternatives', description: 'Research evaluates financial software and process patterns.' },
       { title: 'Model scenarios', description: 'Compare costs, compliance, and implementation effort.' },
       { title: 'Approve plan', description: 'Expert and stakeholders review the final operations recommendation.' },
     ],
@@ -220,7 +220,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
       'Compare financial operations tools for a multi-entity environment',
       'Prepare a business case for automation and governance changes',
     ],
-    chronicleCapabilities: [
+    researchCapabilities: [
       { name: 'Discover', description: 'Survey finance tools, models, and operational patterns relevant to the problem.', icon: Search },
       { name: 'Compare', description: 'Assess trade-offs across cost, implementation speed, and governance.', icon: ChartNoAxesCombined },
       { name: 'Validate', description: 'Check assumptions against market evidence and common operating patterns.', icon: ShieldCheck },
@@ -259,7 +259,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
     workflow: [
       { title: 'Capture service model', description: 'Document current support volume, team coverage, and common issues.' },
       { title: 'Identify gaps', description: 'Analyze escalation paths, bottlenecks, and operational pain points.' },
-      { title: 'Research options', description: 'CHRONICLE explores support tooling and service operating models.' },
+      { title: 'Research options', description: 'Research explores support tooling and service operating models.' },
       { title: 'Compare fit', description: 'Review support tools, staffing patterns, and workflow impacts.' },
       { title: 'Recommend', description: 'Prepare a clear plan with risk, scaling, and approval considerations.' },
     ],
@@ -275,7 +275,7 @@ export const SOLUTION_CATALOG: SolutionDefinition[] = [
       'Design a more efficient escalation workflow for priority cases',
       'Compare AI support tools and service approaches for a regional rollout',
     ],
-    chronicleCapabilities: [
+    researchCapabilities: [
       { name: 'Research', description: 'Map support patterns, tools, and service models relevant to the customer challenge.', icon: Search },
       { name: 'Deep Dive', description: 'Investigate workflow, escalation, and staffing gaps in the current process.', icon: BriefcaseBusiness },
       { name: 'Compare', description: 'Contrast platform options and process alternatives against the operating model.', icon: ChartNoAxesCombined },

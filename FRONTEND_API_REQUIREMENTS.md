@@ -120,7 +120,7 @@ Fetch one engagement
 ### PUT /api/v1/engagements/:id
 Update engagement
 
-## Research / CHRONICLE
+## Supplier research
 
 ### POST /api/v1/engagements/:id/research
 Request:
