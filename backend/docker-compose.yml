@@ -10,6 +10,13 @@ services:
       APP_ENV: development
       DATABASE_URL: sqlite:///./eia.db
       REDIS_URL: redis://redis:6379/0
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-gpt-4o-mini}
+      VULTR_INFERENCE_URL: ${VULTR_INFERENCE_URL:-}
+      VULTR_INFERENCE_API_KEY: ${VULTR_INFERENCE_API_KEY:-}
+      VULTR_INFERENCE_MODEL: ${VULTR_INFERENCE_MODEL:-}
     depends_on:
       - redis
 
