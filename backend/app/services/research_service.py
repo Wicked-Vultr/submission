@@ -1,3 +1,4 @@
+import json
 import uuid
 from datetime import datetime
 from typing import Any
@@ -9,7 +10,12 @@ from app.models import Engagement, Finding, ResearchJob
 
 class ResearchService:
     @staticmethod
-    def create_job(db: Session, engagement_id: str, brief: str) -> ResearchJob:
+    def create_job(
+        db: Session,
+        engagement_id: str,
+        brief: str,
+        research_plan: dict[str, Any] | None = None,
+    ) -> ResearchJob:
         job = ResearchJob(
             id=str(uuid.uuid4()),
             engagement_id=engagement_id,
@@ -19,7 +25,7 @@ class ResearchService:
             current_phase="plan",
             brief=brief,
             findings_count=0,
-            job_metadata="{}",
+            job_metadata=json.dumps({"research_plan": research_plan or {}}),
         )
         db.add(job)
         db.commit()
