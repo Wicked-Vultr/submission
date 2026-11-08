@@ -39,9 +39,10 @@ In particular:
 
 - The frontend's sign-in is a **local demo session**; it does not currently call the backend login endpoint.
 - Several frontend workflows use local/demo data rather than loading and saving through the API.
+- The research screen sends a structured brief, but the backend research endpoint requires a JWT and an engagement already stored in the backend. The local demo session and locally stored engagements are not yet connected to that backend flow.
 - The ProcureIQ frontend route is currently a workflow overview/entry point, not yet a full procurement console connected to these APIs.
 - The backend currently creates tables with SQLAlchemy `create_all`; Alembic is listed as a dependency, but production migration files/workflow are not yet established.
-- LLM configuration exists, but the current service has a mock implementation and does not yet call a verified external provider.
+- The backend can call OpenAI, Vultr Serverless Inference, or a configured OpenAI-compatible endpoint for requirement analysis and supplier-research planning. The default remains `mock` until an operator configures a provider and credentials.
 - Procurement discovery records can be stored, but a real vendor discovery worker is not configured.
 - The procurement comparison endpoint currently uses illustrative criterion values; do not treat these as researched vendor scores.
 - RFQs are records/drafts. There is no verified vendor delivery integration, and the API does not send them externally.
@@ -184,7 +185,7 @@ It starts the API and Redis containers. Redis is infrastructure scaffolding; an 
 
 ## Environment configuration
 
-Use `.env.example` as a reference and create an appropriate local `.env` file for the backend. Do not commit credentials or production secrets.
+Use `.env.example` as a reference and copy it to `backend/.env` for local backend configuration. The backend reads that file regardless of its working directory. Do not commit credentials or production secrets.
 
 Common backend settings include:
 
@@ -200,12 +201,32 @@ Common backend settings include:
 | `JWT_SECRET_KEY` | JWT signing secret | Replace before deployment |
 | `ACCESS_TOKEN_EXPIRE_MINUTES` | JWT lifetime | 1440 minutes |
 | `LLM_PROVIDER` | LLM provider selection | `mock` |
-| `LLM_BASE_URL` | Optional provider endpoint | Not called by current mock service |
-| `LLM_API_KEY` | Optional provider credential | Keep server-side only |
-| `LLM_MODEL` | Optional model identifier | `gpt-4o-mini` |
-| `VULTR_INFERENCE_URL` | Optional Vultr inference URL | Integration not verified/configured |
-| `VULTR_INFERENCE_API_KEY` | Optional Vultr credential | Keep server-side only |
-| `VULTR_INFERENCE_MODEL` | Optional Vultr model identifier | Integration not verified/configured |
+| `LLM_BASE_URL` | OpenAI-compatible API base URL | OpenAI defaults to `https://api.openai.com/v1`; set this for custom-compatible endpoints |
+| `LLM_API_KEY` | OpenAI or compatible-provider credential | Keep server-side only |
+| `LLM_MODEL` | OpenAI or compatible-provider model name | `gpt-4o-mini` |
+| `VULTR_INFERENCE_URL` | Vultr API base URL | Defaults to `https://api.vultrinference.com/v1` |
+| `VULTR_INFERENCE_API_KEY` | Vultr inference credential | Keep server-side only |
+| `VULTR_INFERENCE_MODEL` | Vultr model identifier | Required when `LLM_PROVIDER=vultr` |
+
+To enable a live provider, copy `.env.example` to `backend/.env` (or provide environment variables to the backend process), set `LLM_PROVIDER` to `openai`, `vultr`, or `openai_compatible`, then supply the matching server-side API key and model. For `openai_compatible`, also set `LLM_BASE_URL`. Restart the backend after changing settings. Never put provider credentials in `VITE_*` variables or frontend files.
+
+The backend uses the OpenAI Chat Completions request/response format for OpenAI and Vultr. Vultr documents its Serverless Inference chat endpoint and compatible request format in the [Vultr Serverless Inference documentation](https://docs.vultr.com/products/compute/serverless-inference). Custom-compatible providers must implement this same endpoint shape; other provider formats are not assumed.
+
+For Docker Compose, run from `backend/` with `backend/.env` present. Compose passes the selected provider settings into the API container; without a configured key it remains in `mock` mode.
+
+When a research job is started through the authenticated backend endpoint, the configured model creates a structured research plan (questions, objectives, entities, missing information, and conflicts), and the plan is saved with the job. This is planning only: it does not browse supplier websites or create verified vendor findings. The model's JSON output is validated, and provider or validation errors are returned explicitly rather than silently switching providers.
+
+The research endpoint expects a backend engagement ID and a bearer token:
+
+```http
+POST /api/v1/engagements/{engagement_id}/research
+Authorization: Bearer <backend_access_token>
+Content-Type: application/json
+
+{"brief":"Research 50 business laptops. Budget and delivery date are not yet known."}
+```
+
+The endpoint returns the generated plan and a queued job ID. A separate background worker is still needed to perform live supplier discovery and advance the job. The current frontend's local demo sign-in and local engagement records are not yet connected to this authenticated backend flow.
 
 Frontend environment variables can be provided through a Vite environment file such as `.env.local`. `VITE_API_BASE_URL` is the intended API base URL setting, but the current frontend demo flows are not fully wired to the backend.
 
